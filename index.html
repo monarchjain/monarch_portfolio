@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monarch Jain — Salesforce Certified Administrator</title>
+<meta name="description" content="Monarch Jain — Salesforce Certified Administrator specializing in automation, security architecture, and scalable CRM design.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0D1128;
+  --panel:#161B3D;
+  --panel-light:#1E244C;
+  --panel-border:#2A3163;
+  --gold:#E8A33D;
+  --gold-soft:#F0C077;
+  --teal:#3FBFAD;
+  --cream:#F3F0E6;
+  --white:#FBFAF7;
+  --slate:#8791B8;
+  --slate-dim:#565E8C;
+  --radius:14px;
+  --maxw:1180px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--ink);
+  color:var(--cream);
+  font-family:'Inter',sans-serif;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--gold);color:var(--ink);}
+a{color:inherit;text-decoration:none;}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
+.eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:12.5px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--gold);
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:18px;
+}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--gold);display:inline-block;}
+h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:600;color:var(--white);line-height:1.08;}
+p{color:var(--slate);line-height:1.7;}
+
+/* background texture: faint starfield / cloud drift */
+.bg-decor{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.bg-decor svg{position:absolute;opacity:.5;}
+
+/* ============ NAV ============ */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(13,17,40,.72);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+nav{max-width:var(--maxw);margin:0 auto;padding:18px 32px;display:flex;justify-content:space-between;align-items:center;}
+.logo{font-family:'Fraunces',serif;font-weight:600;font-size:19px;color:var(--white);display:flex;align-items:center;gap:9px;}
+.logo .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold);}
+.navlinks{display:flex;gap:34px;font-size:14px;font-weight:500;}
+.navlinks a{color:var(--slate);transition:color .25s;position:relative;}
+.navlinks a:hover{color:var(--cream);}
+.navlinks a:focus-visible, a:focus-visible, button:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+.nav-cta{
+  font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:500;
+  border:1px solid var(--panel-border);padding:9px 18px;border-radius:100px;
+  color:var(--cream);transition:.25s;
+}
+.nav-cta:hover{border-color:var(--gold);color:var(--gold);}
+.menu-btn{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;}
+.menu-btn span{width:22px;height:2px;background:var(--cream);display:block;}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative;z-index:1;
+  min-height:100vh;
+  display:flex;align-items:center;
+  padding:140px 0 100px;
+}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;}
+.hero h1{font-size:clamp(48px,7vw,84px);letter-spacing:-.02em;}
+.hero h1 .accent{color:var(--gold);font-style:italic;font-weight:500;}
+.hero .role{
+  font-family:'JetBrains Mono',monospace;font-size:15px;color:var(--teal);margin-top:18px;letter-spacing:.02em;
+}
+.hero p.lead{margin-top:22px;font-size:17.5px;max-width:520px;color:var(--slate);}
+.hero-ctas{display:flex;gap:16px;margin-top:38px;flex-wrap:wrap;}
+.btn{
+  font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;
+  padding:14px 26px;border-radius:100px;display:inline-flex;align-items:center;gap:8px;
+  transition:.25s;letter-spacing:.02em;
+}
+.btn-primary{background:var(--gold);color:var(--ink);}
+.btn-primary:hover{background:var(--gold-soft);transform:translateY(-2px);}
+.btn-ghost{border:1px solid var(--panel-border);color:var(--cream);}
+.btn-ghost:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-2px);}
+
+.hero-stats{display:flex;gap:36px;margin-top:56px;flex-wrap:wrap;}
+.stat b{font-family:'Fraunces',serif;font-size:30px;color:var(--white);display:block;font-weight:600;}
+.stat span{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--slate-dim);text-transform:uppercase;letter-spacing:.08em;}
+
+/* badge orbit illustration */
+.badge-orbit{position:relative;width:100%;aspect-ratio:1/1;max-width:420px;margin:0 auto;}
+.orbit-ring{position:absolute;border:1px dashed var(--panel-border);border-radius:50%;}
+.orbit-ring.r1{inset:0;}
+.orbit-ring.r2{inset:14%;}
+.orbit-ring.r3{inset:28%;}
+.orbit-core{
+  position:absolute;inset:34%;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, #232a56, var(--panel));
+  border:1px solid var(--panel-border);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 60px rgba(232,163,61,.12), inset 0 0 30px rgba(63,191,173,.08);
+}
+.orbit-core svg{width:46%;height:46%;}
+.orbit-node{
+  position:absolute;width:52px;height:52px;border-radius:50%;
+  background:var(--panel-light);border:1px solid var(--panel-border);
+  display:flex;align-items:center;justify-content:center;font-size:20px;
+  animation:float 6s ease-in-out infinite;
+}
+.orbit-node svg{width:22px;height:22px;}
+.n1{top:-4%;left:46%;animation-delay:0s;}
+.n2{top:20%;right:-6%;animation-delay:1.2s;border-color:var(--gold);}
+.n3{bottom:8%;right:6%;animation-delay:2.1s;}
+.n4{bottom:-4%;left:30%;animation-delay:3s;border-color:var(--teal);}
+.n5{top:22%;left:-8%;animation-delay:1.7s;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+
+/* ============ SECTION shared ============ */
+section{position:relative;z-index:1;padding:120px 0;}
+.section-head{max-width:640px;margin-bottom:64px;}
+.section-head h2{font-size:clamp(32px,4vw,46px);}
+.section-head p{margin-top:16px;font-size:16px;}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease;}
+.reveal.in{opacity:1;transform:translateY(0);}
+
+/* ============ ABOUT ============ */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;}
+.about-copy p{font-size:16.5px;margin-bottom:18px;}
+.about-copy p strong{color:var(--cream);font-weight:600;}
+.flow-diagram{background:var(--panel);border:1px solid var(--panel-border);border-radius:var(--radius);padding:34px 28px;}
+.flow-diagram .fd-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--slate-dim);text-transform:uppercase;letter-spacing:.1em;margin-bottom:20px;}
+.flow-row{display:flex;align-items:center;gap:0;}
+.flow-box{
+  flex:1;background:var(--panel-light);border:1px solid var(--panel-border);border-radius:9px;
+  padding:14px 12px;text-align:center;font-size:12.5px;color:var(--cream);font-weight:500;
+}
+.flow-box.active{border-color:var(--gold);color:var(--gold);}
+.flow-arrow{width:26px;height:1px;background:var(--panel-border);position:relative;flex-shrink:0;}
+.flow-arrow::after{content:"›";position:absolute;right:-6px;top:-9px;color:var(--slate-dim);}
+.flow-diagram .fd-note{margin-top:20px;font-size:13px;color:var(--slate-dim);}
+
+/* ============ SKILLS ============ */
+.skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;}
+.skill-card{background:var(--panel);border:1px solid var(--panel-border);border-radius:var(--radius);padding:30px 28px;transition:.3s;}
+.skill-card:hover{border-color:var(--panel-border);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.25);}
+.skill-card h3{font-size:19px;margin-bottom:6px;}
+.skill-card .sk-icon{width:34px;height:34px;margin-bottom:16px;color:var(--gold);}
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+.tag{
+  font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--slate);
+  border:1px solid var(--panel-border);padding:6px 12px;border-radius:100px;
+}
+
+/* ============ TRAIL / EXPERIENCE ============ */
+.trail{position:relative;}
+.trail-path{position:relative;padding-left:44px;}
+.trail-line{position:absolute;left:10px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--panel-border),var(--panel-border));}
+.trail-line::before{content:"";position:absolute;inset:0;background:linear-gradient(var(--gold),var(--teal));width:100%;transform-origin:top;transform:scaleY(0);transition:transform 1.4s ease;}
+.trail-line.in::before{transform:scaleY(1);}
+.trail-item{position:relative;padding-bottom:52px;}
+.trail-item:last-child{padding-bottom:0;}
+.trail-node{
+  position:absolute;left:-44px;top:2px;width:22px;height:22px;border-radius:50%;
+  background:var(--ink);border:2px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+}
+.trail-node::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold);}
+.trail-item.teal .trail-node{border-color:var(--teal);}
+.trail-item.teal .trail-node::after{background:var(--teal);}
+.trail-date{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--slate-dim);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;}
+.trail-item h3{font-size:21px;margin-bottom:4px;}
+.trail-item .org{color:var(--teal);font-size:14px;font-weight:500;margin-bottom:12px;}
+.trail-item ul{list-style:none;}
+.trail-item li{color:var(--slate);font-size:14.5px;line-height:1.7;padding-left:18px;position:relative;margin-bottom:6px;}
+.trail-item li::before{content:"—";position:absolute;left:0;color:var(--slate-dim);}
+
+/* ============ PROJECTS ============ */
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;}
+.proj-card{
+  background:var(--panel);border:1px solid var(--panel-border);border-radius:var(--radius);
+  padding:32px;position:relative;overflow:hidden;transition:.35s;
+}
+.proj-card:hover{transform:translateY(-6px);border-color:var(--gold);box-shadow:0 24px 50px rgba(0,0,0,.3);}
+.proj-card .proj-year{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--slate-dim);letter-spacing:.08em;}
+.proj-card h3{font-size:21px;margin:10px 0 12px;}
+.proj-card p{font-size:14.5px;margin-bottom:8px;}
+.proj-glow{position:absolute;width:180px;height:180px;background:radial-gradient(circle,rgba(232,163,61,.14),transparent 70%);top:-60px;right:-60px;border-radius:50%;}
+
+/* ============ TRAILHEAD / CERTS ============ */
+.trailhead{background:var(--panel);border:1px solid var(--panel-border);border-radius:20px;padding:56px;position:relative;overflow:hidden;}
+.trailhead::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 20%,rgba(63,191,173,.09),transparent 55%);}
+.th-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:30px;position:relative;}
+.th-stats{display:flex;gap:50px;flex-wrap:wrap;}
+.th-stats .stat b{font-size:38px;}
+.badges-row{display:flex;gap:16px;margin-top:40px;flex-wrap:wrap;position:relative;}
+.badge-pill{
+  display:flex;align-items:center;gap:10px;background:var(--panel-light);border:1px solid var(--panel-border);
+  border-radius:100px;padding:10px 20px 10px 10px;
+}
+.badge-pill .b-icon{
+  width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#c97f22);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.badge-pill.pending .b-icon{background:none;border:1.5px dashed var(--teal);}
+.badge-pill span{font-size:13.5px;color:var(--cream);font-weight:500;}
+.badge-pill small{display:block;font-size:11px;color:var(--slate-dim);font-family:'JetBrains Mono',monospace;}
+
+.certs-extra{margin-top:46px;position:relative;}
+.certs-extra h4{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--slate-dim);text-transform:uppercase;letter-spacing:.1em;margin-bottom:18px;font-weight:500;}
+.cert-list{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.cert-list div{font-size:13px;color:var(--slate);padding:10px 14px;background:var(--panel-light);border-radius:8px;border:1px solid var(--panel-border);}
+
+/* ============ EDUCATION ============ */
+.edu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.edu-card{border-left:2px solid var(--panel-border);padding-left:22px;}
+.edu-card .edu-date{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);margin-bottom:10px;}
+.edu-card h3{font-size:17px;margin-bottom:6px;line-height:1.4;}
+.edu-card p{font-size:13.5px;}
+
+/* ============ STACK ============ */
+.stack-cloud{display:flex;flex-wrap:wrap;gap:12px;}
+.stack-tag{
+  font-family:'JetBrains Mono',monospace;font-size:13px;padding:10px 18px;border-radius:9px;
+  background:var(--panel);border:1px solid var(--panel-border);color:var(--slate);transition:.25s;
+}
+.stack-tag:hover{color:var(--white);border-color:var(--teal);}
+
+/* ============ PUBLICATION ============ */
+.pub-card{display:flex;gap:24px;align-items:flex-start;background:var(--panel);border:1px solid var(--panel-border);border-radius:var(--radius);padding:30px;}
+.pub-icon{width:44px;height:44px;flex-shrink:0;color:var(--teal);}
+.pub-card h3{font-size:18px;margin-bottom:8px;}
+.pub-card p{font-size:14.5px;}
+
+/* ============ CONTACT / FOOTER ============ */
+footer{position:relative;z-index:1;padding:110px 0 50px;text-align:center;}
+footer .section-head{margin:0 auto 48px;text-align:center;}
+.contact-links{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-bottom:70px;}
+.contact-pill{
+  display:flex;align-items:center;gap:10px;border:1px solid var(--panel-border);border-radius:100px;
+  padding:14px 26px;font-size:14px;font-weight:500;transition:.25s;
+}
+.contact-pill:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-3px);}
+.contact-pill svg{width:18px;height:18px;}
+.foot-bottom{border-top:1px solid var(--panel-border);padding-top:28px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--slate-dim);font-family:'JetBrains Mono',monospace;}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:880px){
+  .navlinks{display:none;}
+  .menu-btn{display:flex;}
+  .hero-grid{grid-template-columns:1fr;}
+  .badge-orbit{margin-top:50px;max-width:300px;}
+  .about{grid-template-columns:1fr;gap:44px;}
+  .skills-grid, .proj-grid{grid-template-columns:1fr;}
+  .edu-grid{grid-template-columns:1fr;gap:30px;}
+  .cert-list{grid-template-columns:1fr 1fr;}
+  .th-stats{gap:30px;}
+  .trailhead{padding:36px 24px;}
+  section{padding:80px 0;}
+  .hero{padding:120px 0 70px;}
+  .wrap{padding:0 22px;}
+  .foot-bottom{flex-direction:column;text-align:center;}
+}
+@media (max-width:480px){
+  .cert-list{grid-template-columns:1fr;}
+  .hero-stats{gap:24px;}
+  .stat b{font-size:24px;}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important;transition:none !important;}
+  html{scroll-behavior:auto;}
+}
+</style>
+</head>
+<body>
+
+<div class="bg-decor">
+  <svg width="100%" height="100%">
+    <circle cx="8%" cy="15%" r="1.4" fill="#8791B8" opacity=".5"/>
+    <circle cx="22%" cy="60%" r="1" fill="#8791B8" opacity=".4"/>
+    <circle cx="42%" cy="8%" r="1.6" fill="#E8A33D" opacity=".4"/>
+    <circle cx="65%" cy="30%" r="1" fill="#8791B8" opacity=".4"/>
+    <circle cx="80%" cy="70%" r="1.6" fill="#3FBFAD" opacity=".35"/>
+    <circle cx="92%" cy="12%" r="1" fill="#8791B8" opacity=".4"/>
+    <circle cx="15%" cy="85%" r="1.3" fill="#8791B8" opacity=".35"/>
+    <circle cx="55%" cy="92%" r="1" fill="#E8A33D" opacity=".3"/>
+  </svg>
+</div>
+
+<header>
+  <nav>
+    <div class="logo"><span class="dot"></span>Monarch Jain</div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#trailhead">Trailhead</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="nav-cta">Let's talk →</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div id="mobileMenu" style="display:none;flex-direction:column;gap:2px;padding:0 22px 22px;">
+    <a href="#about" style="padding:12px 0;color:#F3F0E6;">About</a>
+    <a href="#skills" style="padding:12px 0;color:#F3F0E6;">Skills</a>
+    <a href="#experience" style="padding:12px 0;color:#F3F0E6;">Experience</a>
+    <a href="#projects" style="padding:12px 0;color:#F3F0E6;">Projects</a>
+    <a href="#trailhead" style="padding:12px 0;color:#F3F0E6;">Trailhead</a>
+    <a href="#contact" style="padding:12px 0;color:#F3F0E6;">Contact</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Salesforce Certified Administrator</div>
+      <h1>Monarch<br><span class="accent">Jain</span></h1>
+      <div class="role">Automation · Security Architecture · Scalable CRM Design</div>
+      <p class="lead">I turn business requirements into secure, efficient Salesforce applications — built with Flow Builder, a sturdy security model, and a growing command of Apex &amp; SOQL. Currently trailblazing toward Platform Developer I.</p>
+      <div class="hero-ctas">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><b>50+</b><span>Trailhead Badges</span></div>
+        <div class="stat"><b>50K+</b><span>Trailhead Points</span></div>
+        <div class="stat"><b>4</b><span>CRM Builds Shipped</span></div>
+        <div class="stat"><b>2</b><span>Internships</span></div>
+      </div>
+    </div>
+    <div class="badge-orbit">
+      <div class="orbit-ring r1"></div>
+      <div class="orbit-ring r2"></div>
+      <div class="orbit-ring r3"></div>
+      <div class="orbit-core">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#E8A33D" stroke-width="1.4"><path d="M6 16a4 4 0 010-8 5 5 0 019.6-1.5A4.5 4.5 0 0118 16H6z"/></svg>
+      </div>
+      <div class="orbit-node n1" title="Flow Builder"><svg viewBox="0 0 24 24" fill="none" stroke="#F3F0E6" stroke-width="1.4"><path d="M4 6h6M4 18h6M14 6h6M14 18h6M10 6v12M14 12H4"/></svg></div>
+      <div class="orbit-node n2" title="Certified Administrator"><svg viewBox="0 0 24 24" fill="none" stroke="#E8A33D" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M6 21l2-6 4 3 4-3 2 6"/></svg></div>
+      <div class="orbit-node n3" title="Apex"><svg viewBox="0 0 24 24" fill="none" stroke="#F3F0E6" stroke-width="1.4"><path d="M8 4l-5 8 5 8M16 4l5 8-5 8"/></svg></div>
+      <div class="orbit-node n4" title="SOQL"><svg viewBox="0 0 24 24" fill="none" stroke="#3FBFAD" stroke-width="1.4"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/></svg></div>
+      <div class="orbit-node n5" title="Security Model"><svg viewBox="0 0 24 24" fill="none" stroke="#F3F0E6" stroke-width="1.4"><path d="M12 3l7 3v6c0 5-3 8-7 9-4-1-7-4-7-9V6l7-3z"/></svg></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about">
+  <div class="wrap about">
+    <div class="about-copy reveal">
+      <div class="eyebrow">Profile</div>
+      <h2 style="font-size:34px;margin-bottom:22px;">From business rule to running Flow</h2>
+      <p>I'm a <strong>results-oriented Salesforce Certified Administrator</strong> based in Indore, India, specializing in business process automation and scalable CRM design. My day-to-day lives in <strong>Flow Builder</strong>, permission models, and Lightning Experience — translating what a business actually needs into something secure and efficient on the platform.</p>
+      <p>Beneath the admin toolkit, I'm building a solid foundation in <strong>Apex and SOQL</strong>, currently preparing for my <strong>Platform Developer I</strong> certification with a focus on Apex Triggers and Lightning Web Components — moving from configuring the platform to programming it.</p>
+      <p>Outside Salesforce, I've shipped a real-time face recognition system with Python and OpenCV, and cross-platform apps in Flutter — so automation, for me, isn't limited to one stack.</p>
+    </div>
+    <div class="flow-diagram reveal">
+      <div class="fd-label">// A typical build, my way</div>
+      <div class="flow-row">
+        <div class="flow-box">Business Need</div>
+        <div class="flow-arrow"></div>
+        <div class="flow-box">Data Model</div>
+      </div>
+      <div style="height:14px;"></div>
+      <div class="flow-row">
+        <div class="flow-box active">Flow Builder</div>
+        <div class="flow-arrow"></div>
+        <div class="flow-box">Security &amp; Sharing</div>
+      </div>
+      <div style="height:14px;"></div>
+      <div class="flow-row">
+        <div class="flow-box">Validation Rules</div>
+        <div class="flow-arrow"></div>
+        <div class="flow-box active" style="border-color:#3FBFAD;color:#3FBFAD;">Reports Live</div>
+      </div>
+      <div class="fd-note">Every project below follows this path — from a raw requirement to a secure, reportable object model.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Capabilities</div>
+      <h2>What I build with</h2>
+      <p>Four pillars — from keeping org data safe, to shipping the automation that runs it, to the first lines of Apex behind it.</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <svg class="sk-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="9" cy="7" r="4"/><path d="M2 21c0-4 3-6 7-6s7 2 7 6"/><path d="M16 3.5a4 4 0 010 7"/><path d="M19 21c0-3-1.5-5-4-6"/></svg>
+        <h3>Administration</h3>
+        <div class="tag-row">
+          <span class="tag">User Management</span><span class="tag">Profiles</span><span class="tag">Roles</span>
+          <span class="tag">Permission Sets</span><span class="tag">Sharing Rules</span><span class="tag">Queues</span><span class="tag">Record Types</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <svg class="sk-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 6h6M4 18h6M14 6h6M14 18h6M10 6v12M14 12H4"/></svg>
+        <h3>Automation &amp; Security</h3>
+        <div class="tag-row">
+          <span class="tag">Flow Builder</span><span class="tag">Validation Rules</span><span class="tag">OWD</span>
+          <span class="tag">Role Hierarchy</span><span class="tag">Field-Level Security</span><span class="tag">Permission Set Groups</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <svg class="sk-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 4l-5 8 5 8M16 4l5 8-5 8"/></svg>
+        <h3>Development</h3>
+        <div class="tag-row">
+          <span class="tag">Apex Basics</span><span class="tag">SOQL</span><span class="tag">SOSL</span>
+          <span class="tag">DML</span><span class="tag">Apex Triggers</span><span class="tag">LWC Basics</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <svg class="sk-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        <h3>Reporting &amp; Platform</h3>
+        <div class="tag-row">
+          <span class="tag">Reports</span><span class="tag">Dashboards</span><span class="tag">Lightning Record Pages</span>
+          <span class="tag">Custom Objects</span><span class="tag">Formula Fields</span><span class="tag">Roll-Up Summaries</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCE (TRAIL) ============ -->
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">The Trail So Far</div>
+      <h2>Experience</h2>
+      <p>Two internships, two very different stacks — same habit of shipping working software.</p>
+    </div>
+    <div class="trail-path">
+      <div class="trail-line reveal"></div>
+      <div class="trail-item reveal">
+        <div class="trail-node"></div>
+        <div class="trail-date">June 2025 — October 2025 · Indore, India</div>
+        <h3>Python &amp; AI/ML Intern</h3>
+        <div class="org">Umbrella Protection Systems</div>
+        <ul>
+          <li>Developed a real-time face recognition attendance system using Python, OpenCV, Flask, and MongoDB.</li>
+          <li>Implemented REST APIs for face registration, recognition, attendance marking, and employee management.</li>
+          <li>Worked across computer vision and ML models — debugging, testing, and deploying AI-based applications.</li>
+          <li>Collaborated with the development team to improve system performance, accuracy, and scalability.</li>
+        </ul>
+      </div>
+      <div class="trail-item teal reveal">
+        <div class="trail-node"></div>
+        <div class="trail-date">February 2024 — April 2024 · Indore, India</div>
+        <h3>Flutter Developer Intern</h3>
+        <div class="org">CodeMeg Soft Solution Pvt. Ltd.</div>
+        <ul>
+          <li>Developed cross-platform mobile applications using Flutter and Dart.</li>
+          <li>Integrated REST APIs and implemented responsive UIs following modern UI/UX practices.</li>
+          <li>Worked with Node.js backend services and database connectivity.</li>
+          <li>Participated in debugging, testing, and feature enhancement throughout the development lifecycle.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Salesforce Project Experience</div>
+      <h2>Four builds, one platform</h2>
+      <p>Each one takes a real-world process — hospitals, campuses, rentals, insurance — and rebuilds it as a secure, reportable Salesforce app.</p>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card reveal">
+        <div class="proj-glow"></div>
+        <div class="proj-year">2026</div>
+        <h3>Hospital Appointment Management System</h3>
+        <p>Built using custom objects, record types, and automation to manage patient appointments end-to-end.</p>
+        <p>Implemented validation rules, sharing rules, reports, and dashboards for secure appointment tracking and analytics.</p>
+      </div>
+      <div class="proj-card reveal">
+        <div class="proj-glow"></div>
+        <div class="proj-year">2026</div>
+        <h3>Course Enrollment Management System</h3>
+        <p>A course enrollment CRM built with Lightning Record Pages, formula fields, and roll-up summary fields.</p>
+        <p>Configured profiles, permission sets, sharing rules, and dashboards for student and revenue management.</p>
+      </div>
+      <div class="proj-card reveal">
+        <div class="proj-glow"></div>
+        <div class="proj-year">2026</div>
+        <h3>Vehicle Rental Management System</h3>
+        <p>Designed with custom objects, encrypted fields, and duplicate management for clean rental data.</p>
+        <p>Implemented permission-based access control and reports for monthly rental analytics.</p>
+      </div>
+      <div class="proj-card reveal">
+        <div class="proj-glow"></div>
+        <div class="proj-year">2026</div>
+        <h3>Insurance Management System</h3>
+        <p>Built with record types, field dependencies, and premium calculation logic for policy management.</p>
+        <p>Configured role hierarchy, sharing rules, and security controls for agent and manager access.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRAILHEAD / CERTS ============ -->
+<section id="trailhead">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Certifications &amp; Trailhead</div>
+      <h2>Badges earned along the way</h2>
+    </div>
+    <div class="trailhead reveal">
+      <div class="th-top">
+        <div class="th-stats">
+          <div class="stat"><b>50+</b><span>Trailhead Badges</span></div>
+          <div class="stat"><b>50,000+</b><span>Trailhead Points</span></div>
+          <div class="stat"><b>2</b><span>Salesforce Certifications</span></div>
+        </div>
+        <a href="https://www.salesforce.com/trailblazer/monarchjain" target="_blank" rel="noopener" class="btn btn-ghost">View Trailhead Profile →</a>
+      </div>
+      <div class="badges-row">
+        <div class="badge-pill">
+          <div class="b-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0D1128" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <div><span>Salesforce Certified Administrator</span><small>Earned</small></div>
+        </div>
+        <div class="badge-pill pending">
+          <div class="b-icon"></div>
+          <div><span>Platform Developer I</span><small>Currently preparing</small></div>
+        </div>
+      </div>
+      <div class="certs-extra">
+        <h4>Additional Certifications</h4>
+        <div class="cert-list">
+          <div>Prompt Design in Vertex AI</div>
+          <div>Develop GenAI Apps with Gemini &amp; Streamlit</div>
+          <div>Explore Generative AI with Gemini API in Vertex AI</div>
+          <div>Build Real-World AI Apps with Gemini &amp; Imagen</div>
+          <div>BigQuery for Machine Learning</div>
+          <div>Responsible AI with Google Cloud</div>
+          <div>Deloitte Data Analytics Job Simulation</div>
+          <div>Deloitte Technology Job Simulation</div>
+          <div>Basics of Python — Infosys Springboard</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EDUCATION ============ -->
+<section id="education">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Education</div>
+      <h2>Academic path</h2>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card reveal">
+        <div class="edu-date">2024 — 2026</div>
+        <h3>M.Tech, Information Technology</h3>
+        <p>SGSITS, Indore</p>
+      </div>
+      <div class="edu-card reveal">
+        <div class="edu-date">2022 — 2024</div>
+        <h3>Master of Computer Applications</h3>
+        <p>FCAIT — GLS University, Ahmedabad</p>
+      </div>
+      <div class="edu-card reveal">
+        <div class="edu-date">2019 — 2022</div>
+        <h3>Bachelor of Computer Applications</h3>
+        <p>St. Xavier's College, Ahmedabad</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PUBLICATION ============ -->
+<section id="publication">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Research</div>
+      <h2>Published work</h2>
+    </div>
+    <div class="pub-card reveal">
+      <svg class="pub-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 19.5A2.5 2.5 0 016.5 17H20V4H6.5A2.5 2.5 0 004 6.5v13z"/><path d="M6.5 17H20v3H6.5A2.5 2.5 0 014 17.5"/></svg>
+      <div>
+        <h3>Toxic Speech Classification Using Deep Learning and Machine Learning: A Survey</h3>
+        <p>A survey paper on abusive language detection and behavior analysis in video content using AI/ML techniques.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STACK ============ -->
+<section id="stack">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Beyond Salesforce</div>
+      <h2>Additional technical stack</h2>
+    </div>
+    <div class="stack-cloud reveal">
+      <span class="stack-tag">Java</span><span class="stack-tag">Python</span><span class="stack-tag">C++</span>
+      <span class="stack-tag">SQL</span><span class="stack-tag">MongoDB</span>
+      <span class="stack-tag">HTML</span><span class="stack-tag">CSS</span><span class="stack-tag">JavaScript</span>
+      <span class="stack-tag">Flutter</span><span class="stack-tag">Flask</span><span class="stack-tag">Node.js</span><span class="stack-tag">OpenCV</span>
+      <span class="stack-tag">Git</span><span class="stack-tag">GitHub</span><span class="stack-tag">VS Code</span><span class="stack-tag">Postman</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT / FOOTER ============ -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" style="justify-content:center;">Get in Touch</div>
+      <h2>Let's build the next Flow together</h2>
+      <p>Open to Salesforce Administrator &amp; Developer roles — Indore or remote.</p>
+    </div>
+    <div class="contact-links reveal">
+      <a class="contact-pill" href="mailto:monarch123jain@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        monarch123jain@gmail.com
+      </a>
+      <a class="contact-pill" href="tel:+918770458648">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.4 2.1L8 9.9a16 16 0 006 6l1.4-1.3a2 2 0 012.1-.4c.9.3 1.8.5 2.7.6a2 2 0 011.8 2.1z"/></svg>
+        +91 87704 58648
+      </a>
+      <a class="contact-pill" href="https://linkedin.com/in/monarchjain" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/><path d="M10 9v12M10 13a4 4 0 018 0v8"/></svg>
+        linkedin.com/in/monarchjain
+      </a>
+      <a class="contact-pill" href="https://www.salesforce.com/trailblazer/monarchjain" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l7 3v6c0 5-3 8-7 9-4-1-7-4-7-9V6l7-3z"/></svg>
+        Trailhead Profile
+      </a>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Monarch Jain · Indore, India</span>
+      <span>Built with intent, not a template.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// mobile menu
+const menuBtn = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+menuBtn.addEventListener('click', () => {
+  mobileMenu.style.display = mobileMenu.style.display === 'flex' ? 'none' : 'flex';
+});
+document.querySelectorAll('#mobileMenu a').forEach(a => a.addEventListener('click', () => mobileMenu.style.display = 'none'));
+
+// scroll reveal
+const revealEls = document.querySelectorAll('.reveal, .trail-line');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); }
+  });
+}, { threshold: 0.15 });
+revealEls.forEach(el => io.observe(el));
+</script>
+</body>
+</html>
