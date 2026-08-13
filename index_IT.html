@@ -1,1117 +1,467 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Monarch Jain — Software Engineer</title>
-  <meta name="description"
-    content="Monarch Jain — Software Engineer specializing in Python, Java, REST APIs, backend systems, mobile applications, AI/ML and databases.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet">
-
-  <style>
-    :root {
-      --bg: #070a12;
-      --bg2: #0b1020;
-      --panel: rgba(15, 22, 39, .72);
-      --panel-solid: #10172a;
-      --line: rgba(148, 163, 184, .15);
-      --text: #f5f7fb;
-      --muted: #98a4ba;
-      --blue: #5aa9ff;
-      --cyan: #42e8d2;
-      --violet: #9b7bff;
-      --green: #68e39b;
-      --max: 1180px;
-      --radius: 20px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0
-    }
-
-    html {
-      scroll-behavior: smooth
-    }
-
-    body {
-      background:
-        radial-gradient(circle at 10% 10%, rgba(90, 169, 255, .12), transparent 30%),
-        radial-gradient(circle at 90% 15%, rgba(155, 123, 255, .10), transparent 28%),
-        radial-gradient(circle at 50% 85%, rgba(66, 232, 210, .06), transparent 32%),
-        var(--bg);
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      line-height: 1.65;
-      overflow-x: hidden;
-    }
-
-    body:before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -1;
-      background-image: linear-gradient(rgba(255, 255, 255, .025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, .025) 1px, transparent 1px);
-      background-size: 55px 55px;
-      mask-image: linear-gradient(to bottom, black, transparent 90%);
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none
-    }
-
-    .wrap {
-      max-width: var(--max);
-      margin: auto;
-      padding: 0 28px
-    }
-
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      background: rgba(7, 10, 18, .72);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--line);
-    }
-
-    nav {
-      max-width: var(--max);
-      margin: auto;
-      padding: 17px 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between
-    }
-
-    .logo {
-      font-family: 'Space Grotesk';
-      font-weight: 700;
-      font-size: 19px;
-      display: flex;
-      align-items: center;
-      gap: 10px
-    }
-
-    .logo-mark {
-      width: 11px;
-      height: 11px;
-      border-radius: 3px;
-      background: linear-gradient(135deg, var(--blue), var(--cyan));
-      box-shadow: 0 0 18px rgba(90, 169, 255, .65);
-      transform: rotate(45deg)
-    }
-
-    .navlinks {
-      display: flex;
-      gap: 27px;
-      font-size: 13px;
-      color: var(--muted)
-    }
-
-    .navlinks a:hover {
-      color: var(--text)
-    }
-
-    .nav-cta {
-      font-family: 'JetBrains Mono';
-      font-size: 12px;
-      padding: 9px 15px;
-      border: 1px solid rgba(90, 169, 255, .4);
-      border-radius: 999px;
-      color: #cfe5ff
-    }
-
-    .nav-cta:hover {
-      background: rgba(90, 169, 255, .1);
-      border-color: var(--blue)
-    }
-
-    .menu {
-      display: none;
-      background: none;
-      border: 0;
-      color: var(--text);
-      font-size: 25px
-    }
-
-    .mobile {
-      display: none;
-      padding: 8px 28px 20px;
-      flex-direction: column;
-      gap: 8px;
-      color: var(--muted)
-    }
-
-    section {
-      padding: 115px 0;
-      position: relative
-    }
-
-    .hero {
-      min-height: 100vh;
-      padding-top: 155px;
-      display: flex;
-      align-items: center
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.25fr .75fr;
-      gap: 70px;
-      align-items: center
-    }
-
-    .eyebrow {
-      font-family: 'JetBrains Mono';
-      font-size: 12px;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--cyan);
-      margin-bottom: 20px
-    }
-
-    h1,
-    h2,
-    h3 {
-      font-family: 'Space Grotesk', sans-serif;
-      line-height: 1.08
-    }
-
-    h1 {
-      font-size: clamp(50px, 7vw, 88px);
-      letter-spacing: -.045em
-    }
-
-    h1 .grad {
-      background: linear-gradient(100deg, var(--blue), var(--cyan), var(--violet));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent
-    }
-
-    .hero-role {
-      font-family: 'JetBrains Mono';
-      color: #a9b9d4;
-      font-size: 15px;
-      margin-top: 22px
-    }
-
-    .lead {
-      max-width: 650px;
-      color: var(--muted);
-      font-size: 18px;
-      margin-top: 23px
-    }
-
-    .ctas {
-      display: flex;
-      gap: 13px;
-      flex-wrap: wrap;
-      margin-top: 34px
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 13px 20px;
-      border-radius: 12px;
-      font-weight: 600;
-      font-size: 14px;
-      transition: .25s
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--blue), #7a8dff);
-      color: #07101d;
-      box-shadow: 0 10px 30px rgba(90, 169, 255, .18)
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 38px rgba(90, 169, 255, .27)
-    }
-
-    .btn-ghost {
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, .025)
-    }
-
-    .btn-ghost:hover {
-      border-color: rgba(66, 232, 210, .5);
-      color: var(--cyan);
-      transform: translateY(-3px)
-    }
-
-    .stats {
-      display: flex;
-      gap: 38px;
-      margin-top: 45px;
-      flex-wrap: wrap
-    }
-
-    .stat strong {
-      display: block;
-      font-family: 'Space Grotesk';
-      font-size: 28px
-    }
-
-    .stat span {
-      font-family: 'JetBrains Mono';
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      color: #68758d
-    }
-
-    .hero-card {
-      min-height: 420px;
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      background: linear-gradient(145deg, rgba(20, 31, 55, .85), rgba(9, 14, 26, .75));
-      position: relative;
-      overflow: hidden;
-      padding: 25px;
-      box-shadow: 0 30px 90px rgba(0, 0, 0, .28)
-    }
-
-    .hero-card:after {
-      content: "";
-      position: absolute;
-      width: 260px;
-      height: 260px;
-      border-radius: 50%;
-      right: -100px;
-      top: -100px;
-      background: radial-gradient(circle, rgba(90, 169, 255, .22), transparent 68%)
-    }
-
-    .terminal {
-      height: 100%;
-      border: 1px solid var(--line);
-      border-radius: 17px;
-      background: #080d17;
-      padding: 18px;
-      font-family: 'JetBrains Mono';
-      font-size: 12px;
-      color: #8290a8
-    }
-
-    .term-top {
-      display: flex;
-      gap: 7px;
-      margin-bottom: 25px
-    }
-
-    .dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: #334155
-    }
-
-    .term-line {
-      margin: 11px 0
-    }
-
-    .term-key {
-      color: #6bb6ff
-    }
-
-    .term-val {
-      color: #69e4c7
-    }
-
-    .term-purple {
-      color: #b49aff
-    }
-
-    .cursor {
-      display: inline-block;
-      width: 7px;
-      height: 14px;
-      background: var(--cyan);
-      vertical-align: -2px;
-      animation: blink 1s infinite
-    }
-
-    @keyframes blink {
-      50% {
-        opacity: 0
-      }
-    }
-
-    .section-head {
-      max-width: 720px;
-      margin-bottom: 55px
-    }
-
-    .section-head h2 {
-      font-size: clamp(34px, 4vw, 52px);
-      letter-spacing: -.035em
-    }
-
-    .section-head p {
-      color: var(--muted);
-      margin-top: 15px
-    }
-
-    .grid2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px
-    }
-
-    .card {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 28px;
-      backdrop-filter: blur(12px);
-      transition: .3s
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(90, 169, 255, .35);
-      box-shadow: 0 20px 55px rgba(0, 0, 0, .25)
-    }
-
-    .about-copy p {
-      color: var(--muted);
-      margin-bottom: 17px;
-      font-size: 16px
-    }
-
-    .about-copy strong {
-      color: var(--text)
-    }
-
-    .code-card {
-      font-family: 'JetBrains Mono';
-      font-size: 12px;
-      color: #7e8ca4
-    }
-
-    .code-card .line {
-      display: block;
-      padding: 6px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, .035)
-    }
-
-    .k {
-      color: #a991ff
-    }
-
-    .v {
-      color: #63e4bd
-    }
-
-    .n {
-      color: #69b5ff
-    }
-
-    .skills {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px
-    }
-
-    .skill h3 {
-      font-size: 18px;
-      margin-bottom: 14px
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px
-    }
-
-    .tag {
-      font-family: 'JetBrains Mono';
-      font-size: 11px;
-      color: #aab6c9;
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, .025);
-      padding: 7px 10px;
-      border-radius: 8px
-    }
-
-    .experience {
-      position: relative
-    }
-
-    .timeline {
-      position: relative;
-      margin-left: 10px
-    }
-
-    .timeline:before {
-      content: "";
-      position: absolute;
-      left: 7px;
-      top: 7px;
-      bottom: 7px;
-      width: 1px;
-      background: linear-gradient(var(--blue), var(--cyan), transparent)
-    }
-
-    .job {
-      position: relative;
-      padding-left: 42px;
-      margin-bottom: 50px
-    }
-
-    .job:last-child {
-      margin-bottom: 0
-    }
-
-    .node {
-      position: absolute;
-      left: 0;
-      top: 4px;
-      width: 15px;
-      height: 15px;
-      border-radius: 50%;
-      background: var(--bg);
-      border: 2px solid var(--blue);
-      box-shadow: 0 0 15px rgba(90, 169, 255, .4)
-    }
-
-    .job-date {
-      font-family: 'JetBrains Mono';
-      font-size: 11px;
-      color: var(--cyan);
-      letter-spacing: .08em;
-      text-transform: uppercase
-    }
-
-    .job h3 {
-      font-size: 23px;
-      margin-top: 8px
-    }
-
-    .company {
-      color: #9eabc0;
-      margin: 4px 0 13px
-    }
-
-    .job ul {
-      list-style: none
-    }
-
-    .job li {
-      color: var(--muted);
-      font-size: 14px;
-      margin: 7px 0;
-      padding-left: 17px;
-      position: relative
-    }
-
-    .job li:before {
-      content: "→";
-      position: absolute;
-      left: 0;
-      color: var(--blue)
-    }
-
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 22px
-    }
-
-    .project {
-      min-height: 260px;
-      display: flex;
-      flex-direction: column
-    }
-
-    .project-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 15px
-    }
-
-    .project-num {
-      font-family: 'JetBrains Mono';
-      font-size: 11px;
-      color: #64748b
-    }
-
-    .project h3 {
-      font-size: 22px;
-      margin: 17px 0 10px
-    }
-
-    .project p {
-      color: var(--muted);
-      font-size: 14px
-    }
-
-    .project .tags {
-      margin-top: auto;
-      padding-top: 25px
-    }
-
-    .project-link {
-      display: inline-block;
-      margin-top: 18px;
-      color: #a9d3ff;
-      font-size: 13px
-    }
-
-    .research {
-      border: 1px solid rgba(66, 232, 210, .2);
-      background: linear-gradient(135deg, rgba(66, 232, 210, .06), rgba(90, 169, 255, .04));
-      border-radius: 24px;
-      padding: 34px
-    }
-
-    .research h3 {
-      font-size: 23px;
-      margin-bottom: 10px
-    }
-
-    .research p {
-      color: var(--muted);
-      max-width: 850px
-    }
-
-    .edu {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px
-    }
-
-    .edu-card .year {
-      font-family: 'JetBrains Mono';
-      font-size: 11px;
-      color: var(--cyan)
-    }
-
-    .edu-card h3 {
-      font-size: 18px;
-      margin: 12px 0 7px
-    }
-
-    .edu-card p {
-      color: var(--muted);
-      font-size: 14px
-    }
-
-    .cert-list {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px
-    }
-
-    .cert {
-      padding: 15px 17px;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      background: rgba(255, 255, 255, .025);
-      color: #b4c0d1;
-      font-size: 13px
-    }
-
-    .contact {
-      text-align: center
-    }
-
-    .contact .section-head {
-      margin-left: auto;
-      margin-right: auto
-    }
-
-    .contact-box {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap
-    }
-
-    .contact-pill {
-      padding: 13px 18px;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      background: rgba(255, 255, 255, .025);
-      font-size: 13px
-    }
-
-    .contact-pill:hover {
-      border-color: var(--blue);
-      color: #bfe0ff
-    }
-
-    footer {
-      padding: 30px 0 45px;
-      border-top: 1px solid var(--line);
-      color: #66748a;
-      font-family: 'JetBrains Mono';
-      font-size: 11px
-    }
-
-    .footer-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(22px);
-      transition: .7s ease
-    }
-
-    .reveal.in {
-      opacity: 1;
-      transform: none
-    }
-
-    @media(max-width:900px) {
-
-      .navlinks,
-      .nav-cta {
-        display: none
-      }
-
-      .menu {
-        display: block
-      }
-
-      .mobile.open {
-        display: flex
-      }
-
-      .hero-grid {
-        grid-template-columns: 1fr
-      }
-
-      .hero-card {
-        max-width: 560px
-      }
-
-      .grid2,
-      .project-grid {
-        grid-template-columns: 1fr
-      }
-
-      .skills {
-        grid-template-columns: 1fr
-      }
-
-      .edu {
-        grid-template-columns: 1fr
-      }
-    }
-
-    @media(max-width:560px) {
-      .wrap {
-        padding: 0 19px
-      }
-
-      nav {
-        padding: 16px 19px
-      }
-
-      section {
-        padding: 82px 0
-      }
-
-      .hero {
-        padding-top: 120px
-      }
-
-      h1 {
-        font-size: 52px
-      }
-
-      .lead {
-        font-size: 16px
-      }
-
-      .stats {
-        gap: 23px
-      }
-
-      .stat strong {
-        font-size: 24px
-      }
-
-      .hero-card {
-        min-height: 350px;
-        padding: 14px
-      }
-
-      .card {
-        padding: 22px
-      }
-
-      .cert-list {
-        grid-template-columns: 1fr
-      }
-    }
-
-    @media(prefers-reduced-motion:reduce) {
-      * {
-        scroll-behavior: auto !important;
-        animation: none !important;
-        transition: none !important
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monarch Jain — Software Engineer</title>
+<meta name="description" content="Monarch Jain — Software Engineer specializing in Python, Java, REST APIs, backend systems, mobile applications, AI/ML and databases.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#070a12;
+  --bg2:#0b1020;
+  --panel:rgba(15,22,39,.72);
+  --panel-solid:#10172a;
+  --line:rgba(148,163,184,.15);
+  --text:#f5f7fb;
+  --muted:#98a4ba;
+  --blue:#5aa9ff;
+  --cyan:#42e8d2;
+  --violet:#9b7bff;
+  --green:#68e39b;
+  --max:1180px;
+  --radius:20px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:
+    radial-gradient(circle at 10% 10%,rgba(90,169,255,.12),transparent 30%),
+    radial-gradient(circle at 90% 15%,rgba(155,123,255,.10),transparent 28%),
+    radial-gradient(circle at 50% 85%,rgba(66,232,210,.06),transparent 32%),
+    var(--bg);
+  color:var(--text);
+  font-family:'DM Sans',sans-serif;
+  line-height:1.65;
+  overflow-x:hidden;
+}
+body:before{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;z-index:-1;
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:55px 55px;
+  mask-image:linear-gradient(to bottom,black,transparent 90%);
+}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--max);margin:auto;padding:0 28px}
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(7,10,18,.72);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line);
+}
+nav{max-width:var(--max);margin:auto;padding:17px 28px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Space Grotesk';font-weight:700;font-size:19px;display:flex;align-items:center;gap:10px}
+.logo-mark{width:11px;height:11px;border-radius:3px;background:linear-gradient(135deg,var(--blue),var(--cyan));box-shadow:0 0 18px rgba(90,169,255,.65);transform:rotate(45deg)}
+.navlinks{display:flex;gap:27px;font-size:13px;color:var(--muted)}
+.navlinks a:hover{color:var(--text)}
+.nav-cta{font-family:'JetBrains Mono';font-size:12px;padding:9px 15px;border:1px solid rgba(90,169,255,.4);border-radius:999px;color:#cfe5ff}
+.nav-cta:hover{background:rgba(90,169,255,.1);border-color:var(--blue)}
+.menu{display:none;background:none;border:0;color:var(--text);font-size:25px}
+.mobile{display:none;padding:8px 28px 20px;flex-direction:column;gap:8px;color:var(--muted)}
+section{padding:115px 0;position:relative}
+.hero{min-height:100vh;padding-top:155px;display:flex;align-items:center}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:70px;align-items:center}
+.eyebrow{font-family:'JetBrains Mono';font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:20px}
+h1,h2,h3{font-family:'Space Grotesk',sans-serif;line-height:1.08}
+h1{font-size:clamp(50px,7vw,88px);letter-spacing:-.045em}
+h1 .grad{background:linear-gradient(100deg,var(--blue),var(--cyan),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-role{font-family:'JetBrains Mono';color:#a9b9d4;font-size:15px;margin-top:22px}
+.lead{max-width:650px;color:var(--muted);font-size:18px;margin-top:23px}
+.ctas{display:flex;gap:13px;flex-wrap:wrap;margin-top:34px}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 20px;border-radius:12px;font-weight:600;font-size:14px;transition:.25s}
+.btn-primary{background:linear-gradient(135deg,var(--blue),#7a8dff);color:#07101d;box-shadow:0 10px 30px rgba(90,169,255,.18)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 15px 38px rgba(90,169,255,.27)}
+.btn-ghost{border:1px solid var(--line);background:rgba(255,255,255,.025)}
+.btn-ghost:hover{border-color:rgba(66,232,210,.5);color:var(--cyan);transform:translateY(-3px)}
+.stats{display:flex;gap:38px;margin-top:45px;flex-wrap:wrap}
+.stat strong{display:block;font-family:'Space Grotesk';font-size:28px}
+.stat span{font-family:'JetBrains Mono';font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:#68758d}
+.hero-card{
+  min-height:420px;border:1px solid var(--line);border-radius:28px;background:linear-gradient(145deg,rgba(20,31,55,.85),rgba(9,14,26,.75));
+  position:relative;overflow:hidden;padding:25px;box-shadow:0 30px 90px rgba(0,0,0,.28)
+}
+.hero-card:after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;right:-100px;top:-100px;background:radial-gradient(circle,rgba(90,169,255,.22),transparent 68%)}
+.terminal{height:100%;border:1px solid var(--line);border-radius:17px;background:#080d17;padding:18px;font-family:'JetBrains Mono';font-size:12px;color:#8290a8}
+.term-top{display:flex;gap:7px;margin-bottom:25px}
+.dot{width:9px;height:9px;border-radius:50%;background:#334155}
+.term-line{margin:11px 0}
+.term-key{color:#6bb6ff}.term-val{color:#69e4c7}.term-purple{color:#b49aff}
+.cursor{display:inline-block;width:7px;height:14px;background:var(--cyan);vertical-align:-2px;animation:blink 1s infinite}
+@keyframes blink{50%{opacity:0}}
+.section-head{max-width:720px;margin-bottom:55px}
+.section-head h2{font-size:clamp(34px,4vw,52px);letter-spacing:-.035em}
+.section-head p{color:var(--muted);margin-top:15px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:28px;backdrop-filter:blur(12px);transition:.3s}
+.card:hover{transform:translateY(-5px);border-color:rgba(90,169,255,.35);box-shadow:0 20px 55px rgba(0,0,0,.25)}
+.about-copy p{color:var(--muted);margin-bottom:17px;font-size:16px}
+.about-copy strong{color:var(--text)}
+.code-card{font-family:'JetBrains Mono';font-size:12px;color:#7e8ca4}
+.code-card .line{display:block;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.035)}
+.k{color:#a991ff}.v{color:#63e4bd}.n{color:#69b5ff}
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.skill h3{font-size:18px;margin-bottom:14px}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-family:'JetBrains Mono';font-size:11px;color:#aab6c9;border:1px solid var(--line);background:rgba(255,255,255,.025);padding:7px 10px;border-radius:8px}
+.experience{position:relative}
+.timeline{position:relative;margin-left:10px}
+.timeline:before{content:"";position:absolute;left:7px;top:7px;bottom:7px;width:1px;background:linear-gradient(var(--blue),var(--cyan),transparent)}
+.job{position:relative;padding-left:42px;margin-bottom:50px}
+.job:last-child{margin-bottom:0}
+.node{position:absolute;left:0;top:4px;width:15px;height:15px;border-radius:50%;background:var(--bg);border:2px solid var(--blue);box-shadow:0 0 15px rgba(90,169,255,.4)}
+.job-date{font-family:'JetBrains Mono';font-size:11px;color:var(--cyan);letter-spacing:.08em;text-transform:uppercase}
+.job h3{font-size:23px;margin-top:8px}
+.company{color:#9eabc0;margin:4px 0 13px}
+.job ul{list-style:none}
+.job li{color:var(--muted);font-size:14px;margin:7px 0;padding-left:17px;position:relative}
+.job li:before{content:"→";position:absolute;left:0;color:var(--blue)}
+.project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.project{min-height:285px;display:flex;flex-direction:column}
+.project-top{display:flex;justify-content:space-between;gap:15px}
+.project-num{font-family:'JetBrains Mono';font-size:11px;color:#64748b}
+.project h3{font-size:22px;margin:17px 0 10px}
+.project p{color:var(--muted);font-size:14px}
+.project .tags{margin-top:auto;padding-top:25px}
+.project-link{display:inline-block;margin-top:18px;color:#a9d3ff;font-size:13px}
+.research{border:1px solid rgba(66,232,210,.2);background:linear-gradient(135deg,rgba(66,232,210,.06),rgba(90,169,255,.04));border-radius:24px;padding:34px}
+.research h3{font-size:23px;margin-bottom:10px}
+.research p{color:var(--muted);max-width:850px}
+.edu{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.edu-card .year{font-family:'JetBrains Mono';font-size:11px;color:var(--cyan)}
+.edu-card h3{font-size:18px;margin:12px 0 7px}
+.edu-card p{color:var(--muted);font-size:14px}
+.cert-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.cert{padding:15px 17px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.025);color:#b4c0d1;font-size:13px}
+.contact{text-align:center}
+.contact .section-head{margin-left:auto;margin-right:auto}
+.contact-box{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.contact-pill{padding:13px 18px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.025);font-size:13px}
+.contact-pill:hover{border-color:var(--blue);color:#bfe0ff}
+footer{padding:30px 0 45px;border-top:1px solid var(--line);color:#66748a;font-family:'JetBrains Mono';font-size:11px}
+.footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.reveal{opacity:0;transform:translateY(22px);transition:.7s ease}
+.reveal.in{opacity:1;transform:none}
+@media(max-width:900px){
+  .navlinks,.nav-cta{display:none}.menu{display:block}
+  .mobile.open{display:flex}
+  .hero-grid{grid-template-columns:1fr}.hero-card{max-width:560px}
+  .grid2,.project-grid{grid-template-columns:1fr}
+  .skills{grid-template-columns:1fr}
+  .edu{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .wrap{padding:0 19px}nav{padding:16px 19px}
+  section{padding:82px 0}.hero{padding-top:120px}
+  h1{font-size:52px}.lead{font-size:16px}
+  .stats{gap:23px}.stat strong{font-size:24px}
+  .hero-card{min-height:350px;padding:14px}
+  .card{padding:22px}.cert-list{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+</style>
 </head>
 
 <body>
-  <header>
-    <nav>
-      <a class="logo" href="#home"><span class="logo-mark"></span>Monarch Jain</a>
-      <div class="navlinks">
-        <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a>
-        <a href="#projects">Projects</a><a href="#research">Research</a><a href="#contact">Contact</a>
-      </div>
-      <a class="nav-cta" href="#contact">Let's connect →</a>
-      <button class="menu" id="menu" aria-label="Open menu">☰</button>
-    </nav>
-    <div class="mobile" id="mobile">
+<header>
+  <nav>
+    <a class="logo" href="#home"><span class="logo-mark"></span>Monarch Jain</a>
+    <div class="navlinks">
       <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a>
       <a href="#projects">Projects</a><a href="#research">Research</a><a href="#contact">Contact</a>
     </div>
-  </header>
+    <a class="nav-cta" href="#contact">Let's connect →</a>
+    <button class="menu" id="menu" aria-label="Open menu">☰</button>
+  </nav>
+  <div class="mobile" id="mobile">
+    <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a>
+    <a href="#projects">Projects</a><a href="#research">Research</a><a href="#contact">Contact</a>
+  </div>
+</header>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="wrap hero-grid">
-        <div class="reveal">
-          <div class="eyebrow">Software Engineer · IT</div>
-          <h1>Building useful<br><span class="grad">software systems.</span></h1>
-          <div class="hero-role">Python · Java · Backend · APIs · AI/ML · Mobile</div>
-          <p class="lead">I'm Monarch Jain, a software engineer with hands-on experience building backend systems, REST
-            APIs, mobile applications and AI/ML solutions using Python, Java, Flask, Flutter, SQL and MongoDB.</p>
-          <div class="ctas">
-            <a class="btn btn-primary" href="#projects">Explore my work ↗</a>
-            <a class="btn btn-ghost" href="Monarch_Resume_IT(3).pdf" download>Download Resume ↓</a>
-          </div>
-          <div class="stats">
-            <div class="stat"><strong>2</strong><span>Internships</span></div>
-            <div class="stat"><strong>2</strong><span>Major Projects</span></div>
-            <div class="stat"><strong>2026</strong><span>M.Tech IT</span></div>
-            <div class="stat"><strong>1</strong><span>Research Publication</span></div>
-          </div>
-        </div>
-
-        <div class="hero-card reveal">
-          <div class="terminal">
-            <div class="term-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-            <div class="term-line"><span class="term-key">const</span> developer = {</div>
-            <div class="term-line">&nbsp;&nbsp;name: <span class="term-val">"Monarch Jain"</span>,</div>
-            <div class="term-line">&nbsp;&nbsp;focus: <span class="term-val">"Software Engineering"</span>,</div>
-            <div class="term-line">&nbsp;&nbsp;backend: [<span class="term-val">"Python"</span>, <span
-                class="term-val">"Flask"</span>],</div>
-            <div class="term-line">&nbsp;&nbsp;languages: [<span class="term-val">"Java"</span>, <span
-                class="term-val">"Python"</span>],</div>
-            <div class="term-line">&nbsp;&nbsp;databases: [<span class="term-val">"MongoDB"</span>, <span
-                class="term-val">"MySQL"</span>],</div>
-            <div class="term-line">&nbsp;&nbsp;ai_ml: <span class="term-purple">true</span>,</div>
-            <div class="term-line">&nbsp;&nbsp;mindset: <span class="term-val">"build • learn • improve"</span></div>
-            <div class="term-line">}; <span class="cursor"></span></div>
-          </div>
-        </div>
+<main>
+<section class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div class="reveal">
+      <div class="eyebrow">Software Engineer · IT</div>
+      <h1>Building useful<br><span class="grad">software systems.</span></h1>
+      <div class="hero-role">Python · Java · Backend · APIs · AI/ML · Mobile</div>
+      <p class="lead">I'm Monarch Jain, a software engineer with hands-on experience building backend systems, REST APIs, mobile applications and AI/ML solutions using Python, Java, Flask, Flutter, SQL and MongoDB.</p>
+      <div class="ctas">
+        <a class="btn btn-primary" href="#projects">Explore my work ↗</a>
+        <a class="btn btn-ghost" href="Monarch_Resume_IT(3).pdf" download>Download Resume ↓</a>
       </div>
-    </section>
-
-    <section id="about">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <div class="eyebrow">01 · Profile</div>
-          <h2>Engineering with a practical mindset.</h2>
-          <p>I like taking a problem from requirements to a working, testable application.</p>
-        </div>
-        <div class="grid2">
-          <div class="card about-copy reveal">
-            <p>I'm a <strong>Software Engineer</strong> with hands-on experience in backend development, REST API
-              integration, mobile application development and AI/ML experimentation.</p>
-            <p>My core foundation includes <strong>OOP, Data Structures, Algorithms, DBMS, Operating Systems, Computer
-                Networks and SDLC</strong>. I enjoy working across the stack when a project requires it.</p>
-            <p>My experience includes developing an employee attendance platform with <strong>Python, Flask, MongoDB and
-                OpenCV</strong>, as well as cross-platform applications using <strong>Flutter and Dart</strong>.</p>
-          </div>
-          <div class="card code-card reveal">
-            <span class="line"><span class="k">problem</span> → understand requirements</span>
-            <span class="line"><span class="k">design</span> → data + API architecture</span>
-            <span class="line"><span class="k">build</span> → backend + frontend integration</span>
-            <span class="line"><span class="k">test</span> → validation + debugging</span>
-            <span class="line"><span class="k">improve</span> → performance + maintainability</span>
-            <span class="line"><span class="k">ship</span> → working software</span>
-          </div>
-        </div>
+      <div class="stats">
+        <div class="stat"><strong>2</strong><span>Internships</span></div>
+        <div class="stat"><strong>2</strong><span>Major Projects</span></div>
+        <div class="stat"><strong>2026</strong><span>M.Tech IT</span></div>
+        <div class="stat"><strong>1</strong><span>Research Publication</span></div>
       </div>
-    </section>
-
-    <section id="skills">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <div class="eyebrow">02 · Technical Skills</div>
-          <h2>The tools I work with.</h2>
-        </div>
-        <div class="skills">
-          <div class="card skill reveal">
-            <h3>Programming</h3>
-            <div class="tags"><span class="tag">Java</span><span class="tag">Python</span><span
-                class="tag">JavaScript</span><span class="tag">Apex</span></div>
-          </div>
-          <div class="card skill reveal">
-            <h3>Backend & APIs</h3>
-            <div class="tags"><span class="tag">Flask</span><span class="tag">Node.js</span><span class="tag">REST
-                APIs</span><span class="tag">Postman</span></div>
-          </div>
-          <div class="card skill reveal">
-            <h3>Databases</h3>
-            <div class="tags"><span class="tag">MongoDB</span><span class="tag">MySQL</span><span
-                class="tag">SQL</span><span class="tag">SOQL</span><span class="tag">SOSL</span></div>
-          </div>
-          <div class="card skill reveal">
-            <h3>AI / Computer Vision</h3>
-            <div class="tags"><span class="tag">PyTorch</span><span class="tag">OpenCV</span><span
-                class="tag">Wav2Vec2</span><span class="tag">Whisper</span><span class="tag">IndicBERT</span><span
-                class="tag">Hugging Face</span></div>
-          </div>
-          <div class="card skill reveal">
-            <h3>Mobile & Frontend</h3>
-            <div class="tags"><span class="tag">Flutter</span><span class="tag">Dart</span><span
-                class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Responsive UI</span></div>
-          </div>
-          <div class="card skill reveal">
-            <h3>Engineering Fundamentals</h3>
-            <div class="tags"><span class="tag">OOP</span><span class="tag">DSA</span><span class="tag">DBMS</span><span
-                class="tag">OS</span><span class="tag">Computer Networks</span><span class="tag">SDLC</span><span
-                class="tag">Git</span><span class="tag">GitHub</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="experience">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <div class="eyebrow">03 · Experience</div>
-          <h2>Where I've built software.</h2>
-        </div>
-        <div class="timeline">
-          <article class="job reveal">
-            <span class="node"></span>
-            <div class="job-date">June 2025 — October 2025 · Indore, India</div>
-            <h3>Python & AI/ML Intern</h3>
-            <div class="company">Umbrella Protection Systems</div>
-            <ul>
-              <li>Developed an Employee Attendance Management System using Python, Flask, MongoDB, OpenCV and REST APIs.
-              </li>
-              <li>Supported employee data management, validation, attendance tracking and reporting workflows.</li>
-              <li>Implemented API validation, duplicate detection, testing, debugging and database optimizations.</li>
-              <li>Collaborated with the team on requirements, documentation and application improvements.</li>
-            </ul>
-          </article>
-          <article class="job reveal">
-            <span class="node" style="border-color:var(--cyan)"></span>
-            <div class="job-date">February 2024 — April 2024 · Indore, India</div>
-            <h3>Flutter Developer Intern</h3>
-            <div class="company">CodeMeg Soft Solution Pvt. Ltd.</div>
-            <ul>
-              <li>Developed responsive cross-platform mobile applications using Flutter and Dart with reusable UI
-                components.</li>
-              <li>Integrated REST APIs with backend services and optimized application performance.</li>
-              <li>Participated in testing, debugging, deployment and feature enhancement throughout the development
-                lifecycle.</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <div class="eyebrow">04 · Selected Projects</div>
-          <h2>Projects that show how I think.</h2>
-          <p>From society management and vehicle rentals to mobile applications and multimodal AI, these projects
-            demonstrate practical development across multiple technologies.</p>
-        </div>
-        <div class="project-grid">
-          <article class="card project reveal">
-            <div class="project-top"><span class="project-num">01 / Projects</span><span class="project-num">MOBILE +
-                BACKEND</span></div>
-            <h3>AeroBasket Flight Booking Application</h3>
-            <p>Built a cross-platform flight booking application using Flutter, Node.js and MySQL with user
-              authentication, flight search, booking and cart management.</p>
-            <div class="tags"><span class="tag">Flutter</span><span class="tag">Node.js</span><span
-                class="tag">MySQL</span><span class="tag">REST API</span></div>
-          </article>
-          <article class="card project reveal">
-            <div class="project-top"><span class="project-num">02 / Projects</span><span class="project-num">AI /
-                ML</span></div>
-            <h3>Multimodal Toxic Speech Detection</h3>
-            <p>Designed a multimodal deep learning pipeline combining text, speech and visual features for toxic speech
-              detection in code-mixed videos.</p>
-            <div class="tags"><span class="tag">Python</span><span class="tag">PyTorch</span><span
-                class="tag">IndicBERT</span><span class="tag">Wav2Vec2</span><span class="tag">Whisper</span><span
-                class="tag">OpenCV</span></div>
-          </article>
-          <article class="card project reveal">
-            <div class="project-top"><span class="project-num">03 / Projects</span><span class="project-num">BACKEND +
-                CV</span></div>
-            <h3>Employee Attendance Management System</h3>
-            <p>Developed an attendance platform with employee data management, validation, attendance tracking and
-              reporting, backed by REST APIs and computer vision components.</p>
-            <div class="tags"><span class="tag">Python</span><span class="tag">Flask</span><span
-                class="tag">MongoDB</span><span class="tag">OpenCV</span><span class="tag">REST API</span></div>
-          </article>
-          <article class="card project reveal">
-            <div class="project-top"><span class="project-num">04 / Projects</span><span class="project-num">WEB
-                APPLICATION</span></div>
-            <h3>UrbanCave — Society Management Web App</h3>
-            <p>Developed a society management web application designed to centralize residential operations, streamline
-              communication, and make day-to-day community management more organized.</p>
-            <div class="tags"><span class="tag">Web App</span><span class="tag">Frontend</span><span
-                class="tag">Backend</span><span class="tag">Database</span></div>
-          </article>
-          <article class="card project reveal">
-            <div class="project-top"><span class="project-num">05 / Project</span><span class="project-num">RENTAL
-                PLATFORM</span></div>
-            <h3>Wheels on Rent</h3>
-            <p>Built a vehicle rental project focused on making vehicle discovery and rental management simple through a
-              user-friendly application workflow.</p>
-            <div class="tags"><span class="tag">Web / App</span><span class="tag">Vehicle Rental</span><span
-                class="tag">REST API</span><span class="tag">Database</span></div>
-          </article>
-          <article class="card project reveal">
-            <div class="project-top"><span class="project-num">06 / Research</span><span
-                class="project-num">PUBLICATION</span></div>
-            <h3>Toxic Speech Classification Survey</h3>
-            <p>Research work reviewing deep learning and machine learning approaches for toxic and abusive speech
-              classification, with a focus on multimodal and video-based content.</p>
-            <div class="tags"><span class="tag">Deep Learning</span><span class="tag">NLP</span><span class="tag">Speech
-                AI</span><span class="tag">Computer Vision</span></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="research">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <div class="eyebrow">05 · Research</div>
-          <h2>Research beyond application development.</h2>
-        </div>
-        <div class="research reveal">
-          <h3>Toxic Speech Classification Using Deep Learning and Machine Learning: A Survey</h3>
-          <p>A research survey focused on abusive language and toxic speech detection using AI/ML techniques, including
-            approaches for video and multimodal content.</p>
-          <div class="tags" style="margin-top:22px"><span class="tag">Machine Learning</span><span class="tag">Deep
-              Learning</span><span class="tag">NLP</span><span class="tag">Speech Processing</span><span
-              class="tag">Multimodal AI</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="education">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <div class="eyebrow">06 · Education</div>
-          <h2>Academic foundation.</h2>
-        </div>
-        <div class="edu">
-          <div class="card edu-card reveal">
-            <div class="year">2024 — 2026</div>
-            <h3>M.Tech — Information Technology</h3>
-            <p>SGSITS, Indore</p>
-          </div>
-          <div class="card edu-card reveal">
-            <div class="year">2022 — 2024</div>
-            <h3>Master of Computer Applications</h3>
-            <p>FCAIT — GLS University, Ahmedabad</p>
-          </div>
-          <div class="card edu-card reveal">
-            <div class="year">2019 — 2022</div>
-            <h3>Bachelor of Computer Applications</h3>
-            <p>St. Xavier’s College, Ahmedabad</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="certifications">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <div class="eyebrow">07 · Certifications</div>
-          <h2>Continuous learning.</h2>
-        </div>
-        <div class="cert-list">
-          <div class="cert reveal">Salesforce Certified Administrator</div>
-          <div class="cert reveal">Google Cloud — Vertex AI Prompt Design</div>
-          <div class="cert reveal">Google Cloud — Gemini API</div>
-          <div class="cert reveal">Google Cloud — Responsible AI</div>
-          <div class="cert reveal">Google Cloud — BigQuery for Machine Learning</div>
-          <div class="cert reveal">Deloitte — Data Analytics Job Simulation</div>
-          <div class="cert reveal">Deloitte — Technology Job Simulation</div>
-          <div class="cert reveal">Basics of Python — Infosys Springboard</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="contact" id="contact">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <div class="eyebrow">08 · Contact</div>
-          <h2>Have a role or project in mind?</h2>
-          <p>I'm open to software engineering, backend, Python, Java, AI/ML and related IT opportunities.</p>
-        </div>
-        <div class="contact-box reveal">
-          <a class="contact-pill" href="mailto:monarch123jain@gmail.com">✉ monarch123jain@gmail.com</a>
-          <a class="contact-pill" href="tel:+918770458648">☎ +91 8770458648</a>
-          <a class="contact-pill" href="https://linkedin.com/in/monarchjain" target="_blank" rel="noopener">in
-            LinkedIn</a>
-          <a class="contact-pill" href="Monarch_Resume_IT(3).pdf" download>↓ Resume</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap footer-row">
-      <span>© 2026 Monarch Jain</span>
-      <span>Software Engineering · Indore, India</span>
-      <span>Built with HTML · CSS · JavaScript</span>
     </div>
-  </footer>
 
-  <script>
-    const menu = document.getElementById('menu');
-    const mobile = document.getElementById('mobile');
-    menu.addEventListener('click', () => mobile.classList.toggle('open'));
-    mobile.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobile.classList.remove('open')));
+    <div class="hero-card reveal">
+      <div class="terminal">
+        <div class="term-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+        <div class="term-line"><span class="term-key">const</span> developer = {</div>
+        <div class="term-line">&nbsp;&nbsp;name: <span class="term-val">"Monarch Jain"</span>,</div>
+        <div class="term-line">&nbsp;&nbsp;focus: <span class="term-val">"Software Engineering"</span>,</div>
+        <div class="term-line">&nbsp;&nbsp;backend: [<span class="term-val">"Python"</span>, <span class="term-val">"Flask"</span>],</div>
+        <div class="term-line">&nbsp;&nbsp;languages: [<span class="term-val">"Java"</span>, <span class="term-val">"Python"</span>],</div>
+        <div class="term-line">&nbsp;&nbsp;databases: [<span class="term-val">"MongoDB"</span>, <span class="term-val">"MySQL"</span>],</div>
+        <div class="term-line">&nbsp;&nbsp;ai_ml: <span class="term-purple">true</span>,</div>
+        <div class="term-line">&nbsp;&nbsp;mindset: <span class="term-val">"build • learn • improve"</span></div>
+        <div class="term-line">}; <span class="cursor"></span></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('in');
-      });
-    }, { threshold: .12 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  </script>
+<section id="about">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">01 · Profile</div>
+      <h2>Engineering with a practical mindset.</h2>
+      <p>I like taking a problem from requirements to a working, testable application.</p>
+    </div>
+    <div class="grid2">
+      <div class="card about-copy reveal">
+    <p>
+      I’m an <strong>M.Tech Information Technology graduate and aspiring Software Engineer</strong>
+      with hands-on experience gained through internships, academic projects, and personal development work.
+    </p>
+
+    <p>
+      I enjoy building practical software solutions and exploring areas such as
+      <strong>backend development, REST APIs, web and mobile applications, databases, and AI/ML</strong>.
+      My technical foundation includes <strong>Java, Python, Flask, Flutter, SQL, MongoDB,
+      OOP, Data Structures, Algorithms, DBMS, Operating Systems, Computer Networks, and SDLC</strong>.
+    </p>
+
+    <p>
+      Through my projects and internships, I have worked on an
+      <strong>employee attendance management system using Python, Flask, MongoDB, and OpenCV</strong>,
+      cross-platform applications using <strong>Flutter and Dart</strong>, web applications using
+      <strong>React, Next.js, and Django</strong>, and an <strong>IoT-based gas leakage detection system
+      using Arduino and sensors</strong>.
+    </p>
+
+    <p>
+      As a fresher, I’m looking for an opportunity where I can
+      <strong>apply my technical skills, learn from experienced teams, solve real-world problems,
+      and grow into a strong software engineer</strong>.
+    </p>
+  </div>
+      <div class="card code-card reveal">
+        <span class="line"><span class="k">problem</span> → understand requirements</span>
+        <span class="line"><span class="k">design</span> → data + API architecture</span>
+        <span class="line"><span class="k">build</span> → backend + frontend integration</span>
+        <span class="line"><span class="k">test</span> → validation + debugging</span>
+        <span class="line"><span class="k">improve</span> → performance + maintainability</span>
+        <span class="line"><span class="k">ship</span> → working software</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">02 · Technical Skills</div>
+      <h2>The tools I work with.</h2>
+    </div>
+    <div class="skills">
+      <div class="card skill reveal"><h3>Programming</h3><div class="tags"><span class="tag">Java</span><span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">Apex</span></div></div>
+      <div class="card skill reveal"><h3>Backend & APIs</h3><div class="tags"><span class="tag">Flask</span><span class="tag">Node.js</span><span class="tag">REST APIs</span><span class="tag">Postman</span></div></div>
+      <div class="card skill reveal"><h3>Databases</h3><div class="tags"><span class="tag">MongoDB</span><span class="tag">MySQL</span><span class="tag">SQL</span><span class="tag">SOQL</span><span class="tag">SOSL</span></div></div>
+      <div class="card skill reveal"><h3>AI / Computer Vision</h3><div class="tags"><span class="tag">PyTorch</span><span class="tag">OpenCV</span><span class="tag">Wav2Vec2</span><span class="tag">Whisper</span><span class="tag">IndicBERT</span><span class="tag">Hugging Face</span></div></div>
+      <div class="card skill reveal"><h3>Mobile & Frontend</h3><div class="tags"><span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Responsive UI</span></div></div>
+      <div class="card skill reveal"><h3>Engineering Fundamentals</h3><div class="tags"><span class="tag">OOP</span><span class="tag">DSA</span><span class="tag">DBMS</span><span class="tag">OS</span><span class="tag">Computer Networks</span><span class="tag">SDLC</span><span class="tag">Git</span><span class="tag">GitHub</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">03 · Experience</div>
+      <h2>Where I've built software.</h2>
+    </div>
+    <div class="timeline">
+      <article class="job reveal">
+        <span class="node"></span>
+        <div class="job-date">June 2025 — October 2025 · Indore, India</div>
+        <h3>Python & AI/ML Intern</h3>
+        <div class="company">Umbrella Protection Systems</div>
+        <ul>
+          <li>Developed an Employee Attendance Management System using Python, Flask, MongoDB, OpenCV and REST APIs.</li>
+          <li>Supported employee data management, validation, attendance tracking and reporting workflows.</li>
+          <li>Implemented API validation, duplicate detection, testing, debugging and database optimizations.</li>
+          <li>Collaborated with the team on requirements, documentation and application improvements.</li>
+        </ul>
+      </article>
+      <article class="job reveal">
+        <span class="node" style="border-color:var(--cyan)"></span>
+        <div class="job-date">February 2024 — April 2024 · Indore, India</div>
+        <h3>Flutter Developer Intern</h3>
+        <div class="company">CodeMeg Soft Solution Pvt. Ltd.</div>
+        <ul>
+          <li>Developed responsive cross-platform mobile applications using Flutter and Dart with reusable UI components.</li>
+          <li>Integrated REST APIs with backend services and optimized application performance.</li>
+          <li>Participated in testing, debugging, deployment and feature enhancement throughout the development lifecycle.</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">04 · Selected Projects</div>
+      <h2>Projects that show how I think.</h2>
+      <p>From society management and vehicle rentals to mobile applications and multimodal AI, these projects demonstrate practical development across multiple technologies.</p>
+    </div>
+    <div class="project-grid">
+      <article class="card project reveal">
+        <div class="project-top"><span class="project-num">01 / 2024</span><span class="project-num">MOBILE + BACKEND</span></div>
+        <h3>AeroBasket Flight Booking Application</h3>
+        <p>Built a cross-platform flight booking application using Flutter, Node.js and MySQL with user authentication, flight search, booking and cart management.</p>
+        <div class="tags"><span class="tag">Flutter</span><span class="tag">Node.js</span><span class="tag">MySQL</span><span class="tag">REST API</span></div>
+      </article>
+      <article class="card project reveal">
+        <div class="project-top"><span class="project-num">02 / 2026</span><span class="project-num">AI / ML</span></div>
+        <h3>Multimodal Toxic Speech Detection</h3>
+        <p>Designed a multimodal deep learning pipeline combining text, speech and visual features for toxic speech detection in code-mixed videos.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">IndicBERT</span><span class="tag">Wav2Vec2</span><span class="tag">Whisper</span><span class="tag">OpenCV</span></div>
+      </article>
+      <article class="card project reveal">
+        <div class="project-top"><span class="project-num">03 / 2025</span><span class="project-num">BACKEND + CV</span></div>
+        <h3>Employee Attendance Management System</h3>
+        <p>Developed an attendance platform with employee data management, validation, attendance tracking and reporting, backed by REST APIs and computer vision components.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">MongoDB</span><span class="tag">OpenCV</span><span class="tag">REST API</span></div>
+      </article>
+      <article class="card project reveal">
+        <div class="project-top"><span class="project-num">04 / 2025</span><span class="project-num">WEB APPLICATION</span></div>
+        <h3>UrbanCave — Society Management Web App</h3>
+        <p>Developed a society management web application designed to centralize residential operations, streamline communication, and make day-to-day community management more organized.</p>
+        <div class="tags"><span class="tag">Web App</span><span class="tag">Frontend</span><span class="tag">Backend</span><span class="tag">Database</span></div>
+      </article>
+      <article class="card project reveal">
+        <div class="project-top"><span class="project-num">04 / 2023</span><span class="project-num">WEB + DJANGO</span></div>
+        <h3>Wheels on Rent</h3>
+        <p>Designed and developed a vehicle-rental application for two-wheelers and four-wheelers, allowing customers to search, reserve and pay for vehicles through a user-friendly interface.</p>
+        <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Python</span><span class="tag">Django</span><span class="tag">SQL</span></div>
+      </article>
+      <article class="card project reveal">
+        <div class="project-top"><span class="project-num">05 / 2019</span><span class="project-num">WEB APPLICATION</span></div>
+        <h3>UrbanCave — Society Management</h3>
+        <p>Developed an online society management website with user authentication, adding new society members, recording tenant details and paying maintenance.</p>
+        <div class="tags"><span class="tag">React JS</span><span class="tag">Next JS</span><span class="tag">Web Development</span><span class="tag">Authentication</span></div>
+      </article>
+      <article class="card project reveal">
+        <div class="project-top"><span class="project-num">06 / 2023</span><span class="project-num">IoT</span></div>
+        <h3>Gas Leakage Detection</h3>
+        <p>Developed an IoT-based gas leakage detection system using Arduino Uno and an MQ5 sensor. The system continuously monitors gas readings and activates LED and buzzer alerts when readings exceed a defined benchmark.</p>
+        <div class="tags"><span class="tag">Arduino Uno</span><span class="tag">MQ5 Sensor</span><span class="tag">Arduino IDE</span><span class="tag">IoT</span><span class="tag">Buzzer</span><span class="tag">LED</span></div>
+      </article>
+      <article class="card project reveal">
+        <div class="project-top"><span class="project-num">06 / Research</span><span class="project-num">PUBLICATION</span></div>
+        <h3>Toxic Speech Classification Survey</h3>
+        <p>Research work reviewing deep learning and machine learning approaches for toxic and abusive speech classification, with a focus on multimodal and video-based content.</p>
+        <div class="tags"><span class="tag">Deep Learning</span><span class="tag">NLP</span><span class="tag">Speech AI</span><span class="tag">Computer Vision</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="research">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">05 · Research</div>
+      <h2>Research beyond application development.</h2>
+    </div>
+    <div class="research reveal">
+      <h3>Toxic Speech Classification Using Deep Learning and Machine Learning: A Survey</h3>
+      <p>A research survey focused on abusive language and toxic speech detection using AI/ML techniques, including approaches for video and multimodal content.</p>
+      <div class="tags" style="margin-top:22px"><span class="tag">Machine Learning</span><span class="tag">Deep Learning</span><span class="tag">NLP</span><span class="tag">Speech Processing</span><span class="tag">Multimodal AI</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">06 · Education</div>
+      <h2>Academic foundation.</h2>
+    </div>
+    <div class="edu">
+      <div class="card edu-card reveal"><div class="year">2024 — 2026</div><h3>M.Tech — Information Technology</h3><p>SGSITS, Indore</p></div>
+      <div class="card edu-card reveal"><div class="year">2022 — 2024</div><h3>Master of Computer Applications</h3><p>FCAIT — GLS University, Ahmedabad</p></div>
+      <div class="card edu-card reveal"><div class="year">2019 — 2022</div><h3>Bachelor of Computer Applications</h3><p>St. Xavier’s College, Ahmedabad</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">07 · Certifications</div>
+      <h2>Continuous learning.</h2>
+    </div>
+    <div class="cert-list">
+      <div class="cert reveal">Salesforce Certified Administrator</div>
+      <div class="cert reveal">Google Cloud — Vertex AI Prompt Design</div>
+      <div class="cert reveal">Google Cloud — Gemini API</div>
+      <div class="cert reveal">Google Cloud — Responsible AI</div>
+      <div class="cert reveal">Google Cloud — BigQuery for Machine Learning</div>
+      <div class="cert reveal">Deloitte — Data Analytics Job Simulation</div>
+      <div class="cert reveal">Deloitte — Technology Job Simulation</div>
+      <div class="cert reveal">Basics of Python — Infosys Springboard</div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">08 · Contact</div>
+      <h2>Have a role or project in mind?</h2>
+      <p>I'm open to software engineering, backend, Python, Java, AI/ML and related IT opportunities.</p>
+    </div>
+    <div class="contact-box reveal">
+      <a class="contact-pill" href="mailto:monarch123jain@gmail.com">✉ monarch123jain@gmail.com</a>
+      <a class="contact-pill" href="tel:+918770458648">☎ +91 8770458648</a>
+      <a class="contact-pill" href="https://linkedin.com/in/monarchjain" target="_blank" rel="noopener">in LinkedIn</a>
+      <a class="contact-pill" href="Monarch_Resume_IT(3).pdf" download>↓ Resume</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <span>© 2026 Monarch Jain</span>
+    <span>Software Engineering · Indore, India</span>
+    <span>Built with HTML · CSS · JavaScript</span>
+  </div>
+</footer>
+
+<script>
+const menu=document.getElementById('menu');
+const mobile=document.getElementById('mobile');
+menu.addEventListener('click',()=>mobile.classList.toggle('open'));
+mobile.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mobile.classList.remove('open')));
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting) entry.target.classList.add('in');
+  });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
 </body>
-
 </html>
