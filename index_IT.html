@@ -121,13 +121,16 @@ h1 .grad{background:linear-gradient(100deg,var(--blue),var(--cyan),var(--violet)
 .job li{color:var(--muted);font-size:14px;margin:7px 0;padding-left:17px;position:relative}
 .job li:before{content:"→";position:absolute;left:0;color:var(--blue)}
 .project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
-.project{min-height:285px;display:flex;flex-direction:column}
+.project{min-height:260px;display:flex;flex-direction:column}
 .project-top{display:flex;justify-content:space-between;gap:15px}
 .project-num{font-family:'JetBrains Mono';font-size:11px;color:#64748b}
 .project h3{font-size:22px;margin:17px 0 10px}
 .project p{color:var(--muted);font-size:14px}
 .project .tags{margin-top:auto;padding-top:25px}
-.project-link{display:inline-block;margin-top:18px;color:#a9d3ff;font-size:13px}
+.project-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.project-link{display:inline-flex;align-items:center;gap:7px;padding:8px 12px;border:1px solid var(--line);border-radius:9px;background:rgba(255,255,255,.025);color:#a9d3ff;font-family:'JetBrains Mono';font-size:11px;transition:.25s}
+.project-link:hover{border-color:var(--blue);color:var(--cyan);transform:translateY(-2px)}
+.research-link{margin-top:22px}
 .research{border:1px solid rgba(66,232,210,.2);background:linear-gradient(135deg,rgba(66,232,210,.06),rgba(90,169,255,.04));border-radius:24px;padding:34px}
 .research h3{font-size:23px;margin-bottom:10px}
 .research p{color:var(--muted);max-width:850px}
@@ -193,7 +196,7 @@ footer{padding:30px 0 45px;border-top:1px solid var(--line);color:#66748a;font-f
       <p class="lead">I'm Monarch Jain, a software engineer with hands-on experience building backend systems, REST APIs, mobile applications and AI/ML solutions using Python, Java, Flask, Flutter, SQL and MongoDB.</p>
       <div class="ctas">
         <a class="btn btn-primary" href="#projects">Explore my work ↗</a>
-        <a class="btn btn-ghost" href="Monarch_Resume_IT(3).pdf" download>Download Resume ↓</a>
+        <a class="btn btn-ghost" href="Monarch_resume_IT.pdf" download> Download Resume ↓</a>
       </div>
       <div class="stats">
         <div class="stat"><strong>2</strong><span>Internships</span></div>
@@ -229,32 +232,10 @@ footer{padding:30px 0 45px;border-top:1px solid var(--line);color:#66748a;font-f
     </div>
     <div class="grid2">
       <div class="card about-copy reveal">
-    <p>
-      I’m an <strong>M.Tech Information Technology graduate and aspiring Software Engineer</strong>
-      with hands-on experience gained through internships, academic projects, and personal development work.
-    </p>
-
-    <p>
-      I enjoy building practical software solutions and exploring areas such as
-      <strong>backend development, REST APIs, web and mobile applications, databases, and AI/ML</strong>.
-      My technical foundation includes <strong>Java, Python, Flask, Flutter, SQL, MongoDB,
-      OOP, Data Structures, Algorithms, DBMS, Operating Systems, Computer Networks, and SDLC</strong>.
-    </p>
-
-    <p>
-      Through my projects and internships, I have worked on an
-      <strong>employee attendance management system using Python, Flask, MongoDB, and OpenCV</strong>,
-      cross-platform applications using <strong>Flutter and Dart</strong>, web applications using
-      <strong>React, Next.js, and Django</strong>, and an <strong>IoT-based gas leakage detection system
-      using Arduino and sensors</strong>.
-    </p>
-
-    <p>
-      As a fresher, I’m looking for an opportunity where I can
-      <strong>apply my technical skills, learn from experienced teams, solve real-world problems,
-      and grow into a strong software engineer</strong>.
-    </p>
-  </div>
+        <p>I'm a <strong>Software Engineer</strong> with hands-on experience in backend development, REST API integration, mobile application development and AI/ML experimentation.</p>
+        <p>My core foundation includes <strong>OOP, Data Structures, Algorithms, DBMS, Operating Systems, Computer Networks and SDLC</strong>. I enjoy working across the stack when a project requires it.</p>
+        <p>My experience includes developing an employee attendance platform with <strong>Python, Flask, MongoDB and OpenCV</strong>, as well as cross-platform applications using <strong>Flutter and Dart</strong>.</p>
+      </div>
       <div class="card code-card reveal">
         <span class="line"><span class="k">problem</span> → understand requirements</span>
         <span class="line"><span class="k">design</span> → data + API architecture</span>
@@ -327,46 +308,35 @@ footer{padding:30px 0 45px;border-top:1px solid var(--line);color:#66748a;font-f
     </div>
     <div class="project-grid">
       <article class="card project reveal">
-        <div class="project-top"><span class="project-num">01 / 2024</span><span class="project-num">MOBILE + BACKEND</span></div>
+        <div class="project-top"><span class="project-num">01 / Projects</span><span class="project-num">MOBILE + BACKEND</span></div>
         <h3>AeroBasket Flight Booking Application</h3>
-        <p>Built a cross-platform flight booking application using Flutter, Node.js and MySQL with user authentication, flight search, booking and cart management.</p>
-        <div class="tags"><span class="tag">Flutter</span><span class="tag">Node.js</span><span class="tag">MySQL</span><span class="tag">REST API</span></div>
+        <p>Built a cross-platform flight booking application using Flutter, Node.js and MongoDB with user authentication, flight search, booking and cart management.</p>
+        <div class="tags"><span class="tag">Flutter</span><span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">REST API</span></div>
+        <div class="project-links"><a class="project-link" href="https://github.com/monarchjain/AeroBasket" target="_blank" rel="noopener">GitHub ↗</a></div>
       </article>
       <article class="card project reveal">
-        <div class="project-top"><span class="project-num">02 / 2026</span><span class="project-num">AI / ML</span></div>
+        <div class="project-top"><span class="project-num">02 / Projects</span><span class="project-num">AI / ML</span></div>
         <h3>Multimodal Toxic Speech Detection</h3>
         <p>Designed a multimodal deep learning pipeline combining text, speech and visual features for toxic speech detection in code-mixed videos.</p>
         <div class="tags"><span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">IndicBERT</span><span class="tag">Wav2Vec2</span><span class="tag">Whisper</span><span class="tag">OpenCV</span></div>
       </article>
       <article class="card project reveal">
-        <div class="project-top"><span class="project-num">03 / 2025</span><span class="project-num">BACKEND + CV</span></div>
+        <div class="project-top"><span class="project-num">03 / Projects</span><span class="project-num">BACKEND + CV</span></div>
         <h3>Employee Attendance Management System</h3>
         <p>Developed an attendance platform with employee data management, validation, attendance tracking and reporting, backed by REST APIs and computer vision components.</p>
         <div class="tags"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">MongoDB</span><span class="tag">OpenCV</span><span class="tag">REST API</span></div>
       </article>
       <article class="card project reveal">
-        <div class="project-top"><span class="project-num">04 / 2025</span><span class="project-num">WEB APPLICATION</span></div>
+        <div class="project-top"><span class="project-num">04 / Projects</span><span class="project-num">WEB APPLICATION</span></div>
         <h3>UrbanCave — Society Management Web App</h3>
         <p>Developed a society management web application designed to centralize residential operations, streamline communication, and make day-to-day community management more organized.</p>
         <div class="tags"><span class="tag">Web App</span><span class="tag">Frontend</span><span class="tag">Backend</span><span class="tag">Database</span></div>
       </article>
       <article class="card project reveal">
-        <div class="project-top"><span class="project-num">04 / 2023</span><span class="project-num">WEB + DJANGO</span></div>
+        <div class="project-top"><span class="project-num">05 / Project</span><span class="project-num">RENTAL PLATFORM</span></div>
         <h3>Wheels on Rent</h3>
-        <p>Designed and developed a vehicle-rental application for two-wheelers and four-wheelers, allowing customers to search, reserve and pay for vehicles through a user-friendly interface.</p>
-        <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Python</span><span class="tag">Django</span><span class="tag">SQL</span></div>
-      </article>
-      <article class="card project reveal">
-        <div class="project-top"><span class="project-num">05 / 2019</span><span class="project-num">WEB APPLICATION</span></div>
-        <h3>UrbanCave — Society Management</h3>
-        <p>Developed an online society management website with user authentication, adding new society members, recording tenant details and paying maintenance.</p>
-        <div class="tags"><span class="tag">React JS</span><span class="tag">Next JS</span><span class="tag">Web Development</span><span class="tag">Authentication</span></div>
-      </article>
-      <article class="card project reveal">
-        <div class="project-top"><span class="project-num">06 / 2023</span><span class="project-num">IoT</span></div>
-        <h3>Gas Leakage Detection</h3>
-        <p>Developed an IoT-based gas leakage detection system using Arduino Uno and an MQ5 sensor. The system continuously monitors gas readings and activates LED and buzzer alerts when readings exceed a defined benchmark.</p>
-        <div class="tags"><span class="tag">Arduino Uno</span><span class="tag">MQ5 Sensor</span><span class="tag">Arduino IDE</span><span class="tag">IoT</span><span class="tag">Buzzer</span><span class="tag">LED</span></div>
+        <p>Built a vehicle rental project focused on making vehicle discovery and rental management simple through a user-friendly application workflow.</p>
+        <div class="tags"><span class="tag">Web / App</span><span class="tag">Vehicle Rental</span><span class="tag">REST API</span><span class="tag">Database</span></div>
       </article>
       <article class="card project reveal">
         <div class="project-top"><span class="project-num">06 / Research</span><span class="project-num">PUBLICATION</span></div>
@@ -388,6 +358,7 @@ footer{padding:30px 0 45px;border-top:1px solid var(--line);color:#66748a;font-f
       <h3>Toxic Speech Classification Using Deep Learning and Machine Learning: A Survey</h3>
       <p>A research survey focused on abusive language and toxic speech detection using AI/ML techniques, including approaches for video and multimodal content.</p>
       <div class="tags" style="margin-top:22px"><span class="tag">Machine Learning</span><span class="tag">Deep Learning</span><span class="tag">NLP</span><span class="tag">Speech Processing</span><span class="tag">Multimodal AI</span></div>
+      <div class="project-links research-link"><a class="project-link" href="https://propulsiontechjournal.com/index.php/journal/article/view/10400" target="_blank" rel="noopener">View Publication ↗</a></div>
     </div>
   </div>
 </section>
@@ -436,7 +407,7 @@ footer{padding:30px 0 45px;border-top:1px solid var(--line);color:#66748a;font-f
       <a class="contact-pill" href="mailto:monarch123jain@gmail.com">✉ monarch123jain@gmail.com</a>
       <a class="contact-pill" href="tel:+918770458648">☎ +91 8770458648</a>
       <a class="contact-pill" href="https://linkedin.com/in/monarchjain" target="_blank" rel="noopener">in LinkedIn</a>
-      <a class="contact-pill" href="Monarch_Resume_IT(3).pdf" download>↓ Resume</a>
+      <a class="contact-pill" href="Monarch_resume_IT.pdf" download>↓ Resume</a>
     </div>
   </div>
 </section>

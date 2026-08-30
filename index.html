@@ -193,6 +193,16 @@ section{position:relative;z-index:1;padding:120px 0;}
 .trail-item li::before{content:"—";position:absolute;left:0;color:var(--slate-dim);}
 
 /* ============ PROJECTS ============ */
+.proj-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
+.proj-link{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:8px 13px;border:1px solid var(--panel-border);
+  border-radius:9px;color:var(--gold-soft);
+  font-family:'JetBrains Mono',monospace;font-size:11.5px;
+  transition:.25s;
+}
+.proj-link:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-2px);}
+.pub-link{margin-top:18px;}
 .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;}
 .proj-card{
   background:var(--panel);border:1px solid var(--panel-border);border-radius:var(--radius);
@@ -341,8 +351,8 @@ footer .section-head{margin:0 auto 48px;text-align:center;}
         <a href="#contact" class="btn btn-ghost">Get in Touch</a>
       </div>
       <div class="hero-stats">
-        <div class="stat"><b>50+</b><span>Trailhead Badges</span></div>
-        <div class="stat"><b>50K+</b><span>Trailhead Points</span></div>
+        <div class="stat"><b>80+</b><span>Trailhead Badges</span></div>
+        <div class="stat"><b>55K+</b><span>Trailhead Points</span></div>
         <div class="stat"><b>4</b><span>CRM Builds Shipped</span></div>
         <div class="stat"><b>2</b><span>Internships</span></div>
       </div>
@@ -369,9 +379,9 @@ footer .section-head{margin:0 auto 48px;text-align:center;}
     <div class="about-copy reveal">
       <div class="eyebrow">Profile</div>
       <h2 style="font-size:34px;margin-bottom:22px;">From business rule to running Flow</h2>
-      <p>I'm a <strong>results-oriented Salesforce Certified Administrator</strong> based in Indore, India, specializing in business process automation and scalable CRM design. My day-to-day lives in <strong>Flow Builder</strong>, permission models, and Lightning Experience — translating what a business actually needs into something secure and efficient on the platform.</p>
-      <p>Beneath the admin toolkit, I'm building a solid foundation in <strong>Apex and SOQL</strong>, currently preparing for my <strong>Platform Developer I</strong> certification with a focus on Apex Triggers and Lightning Web Components — moving from configuring the platform to programming it.</p>
-      <p>Outside Salesforce, I've shipped a real-time face recognition system with Python and OpenCV, and cross-platform apps in Flutter — so automation, for me, isn't limited to one stack.</p>
+      <p>I'm a <strong>Salesforce Certified Administrator</strong> with a builder's mindset — turning business requirements into secure, automated, and scalable CRM solutions. I work across <strong>Flow Builder, security architecture, data modeling, and Lightning Experience</strong>, with a growing focus on Apex and platform development.</p>
+      <p>I'm currently expanding from administration into development through <strong>Apex, SOQL, Triggers, and Lightning Web Components</strong>, working toward Platform Developer I. Alongside Salesforce, my background spans <strong>AI/ML, Python, Flutter, Node.js, and databases</strong> — giving me a broader engineering perspective on how products and systems come together.</p>
+      <p><strong>I don't just configure platforms. I like building things, understanding how they work, and finding ways to make them better.</strong></p>
     </div>
     <div class="flow-diagram reveal">
       <div class="fd-label">// A typical build, my way</div>
@@ -475,6 +485,9 @@ footer .section-head{margin:0 auto 48px;text-align:center;}
           <li>Worked with Node.js backend services and database connectivity.</li>
           <li>Participated in debugging, testing, and feature enhancement throughout the development lifecycle.</li>
         </ul>
+        <div class="proj-links">
+          <a class="proj-link" href="https://github.com/monarchjain/AeroBasket" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
       </div>
     </div>
   </div>
@@ -485,10 +498,9 @@ footer .section-head{margin:0 auto 48px;text-align:center;}
   <div class="wrap">
     <div class="section-head reveal">
       <div class="eyebrow">Salesforce Project Experience</div>
-      <h2>Four builds, one platform</h2>
-      <p>Each one takes a real-world process — hospitals, campuses, rentals, insurance — and rebuilds it as a secure, reportable Salesforce app.</p>
+      <h2>Projects across Salesforce & full-stack</h2>
+      <p>From Salesforce CRM systems to full-stack mobile applications, I build practical, secure, and scalable software around real-world workflows.</p>
     </div>
-    <div class="proj-grid">
       <div class="proj-card reveal">
         <div class="proj-glow"></div>
         <div class="proj-year">2026</div>
@@ -531,8 +543,8 @@ footer .section-head{margin:0 auto 48px;text-align:center;}
     <div class="trailhead reveal">
       <div class="th-top">
         <div class="th-stats">
-          <div class="stat"><b>50+</b><span>Trailhead Badges</span></div>
-          <div class="stat"><b>50,000+</b><span>Trailhead Points</span></div>
+          <div class="stat"><b>80+</b><span>Trailhead Badges</span></div>
+          <div class="stat"><b>55,000+</b><span>Trailhead Points</span></div>
           <div class="stat"><b>2</b><span>Salesforce Certifications</span></div>
         </div>
         <a href="https://www.salesforce.com/trailblazer/monarchjain" target="_blank" rel="noopener" class="btn btn-ghost">View Trailhead Profile →</a>
@@ -604,6 +616,9 @@ footer .section-head{margin:0 auto 48px;text-align:center;}
       <div>
         <h3>Toxic Speech Classification Using Deep Learning and Machine Learning: A Survey</h3>
         <p>A survey paper on abusive language detection and behavior analysis in video content using AI/ML techniques.</p>
+        <div class="proj-links pub-link">
+          <a class="proj-link" href="https://propulsiontechjournal.com/index.php/journal/article/view/10400" target="_blank" rel="noopener">View Publication ↗</a>
+        </div>
       </div>
     </div>
   </div>
