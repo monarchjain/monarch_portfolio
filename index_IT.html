@@ -126,6 +126,9 @@ h1 .grad{background:linear-gradient(100deg,var(--blue),var(--cyan),var(--violet)
 .project-num{font-family:'JetBrains Mono';font-size:11px;color:#64748b}
 .project h3{font-size:22px;margin:17px 0 10px}
 .project p{color:var(--muted);font-size:14px}
+.project ul.plist{list-style:none;margin-top:12px}
+.project ul.plist li{color:var(--muted);font-size:13px;margin:6px 0;padding-left:16px;position:relative}
+.project ul.plist li:before{content:"→";position:absolute;left:0;color:var(--cyan)}
 .project .tags{margin-top:auto;padding-top:25px}
 .project-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
 .project-link{display:inline-flex;align-items:center;gap:7px;padding:8px 12px;border:1px solid var(--line);border-radius:9px;background:rgba(255,255,255,.025);color:#a9d3ff;font-family:'JetBrains Mono';font-size:11px;transition:.25s}
@@ -256,10 +259,10 @@ footer{padding:30px 0 45px;border-top:1px solid var(--line);color:#66748a;font-f
     </div>
     <div class="skills">
       <div class="card skill reveal"><h3>Programming</h3><div class="tags"><span class="tag">Java</span><span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">Apex</span></div></div>
-      <div class="card skill reveal"><h3>Backend & APIs</h3><div class="tags"><span class="tag">Flask</span><span class="tag">Node.js</span><span class="tag">REST APIs</span><span class="tag">Postman</span></div></div>
+      <div class="card skill reveal"><h3>Backend & APIs</h3><div class="tags"><span class="tag">Flask</span><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">REST APIs</span><span class="tag">JWT Auth</span><span class="tag">Postman</span></div></div>
       <div class="card skill reveal"><h3>Databases</h3><div class="tags"><span class="tag">MongoDB</span><span class="tag">MySQL</span><span class="tag">SQL</span><span class="tag">SOQL</span><span class="tag">SOSL</span></div></div>
-      <div class="card skill reveal"><h3>AI / Computer Vision</h3><div class="tags"><span class="tag">PyTorch</span><span class="tag">OpenCV</span><span class="tag">Wav2Vec2</span><span class="tag">Whisper</span><span class="tag">IndicBERT</span><span class="tag">Hugging Face</span></div></div>
-      <div class="card skill reveal"><h3>Mobile & Frontend</h3><div class="tags"><span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Responsive UI</span></div></div>
+      <div class="card skill reveal"><h3>AI / Computer Vision</h3><div class="tags"><span class="tag">PyTorch</span><span class="tag">OpenCV</span><span class="tag">VGG16</span><span class="tag">Wav2Vec2</span><span class="tag">Whisper</span><span class="tag">IndicBERT</span><span class="tag">Hugging Face</span></div></div>
+      <div class="card skill reveal"><h3>Mobile & Frontend</h3><div class="tags"><span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">GetX</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Responsive UI</span></div></div>
       <div class="card skill reveal"><h3>Engineering Fundamentals</h3><div class="tags"><span class="tag">OOP</span><span class="tag">DSA</span><span class="tag">DBMS</span><span class="tag">OS</span><span class="tag">Computer Networks</span><span class="tag">SDLC</span><span class="tag">Git</span><span class="tag">GitHub</span></div></div>
     </div>
   </div>
@@ -279,6 +282,7 @@ footer{padding:30px 0 45px;border-top:1px solid var(--line);color:#66748a;font-f
         <div class="company">Umbrella Protection Systems</div>
         <ul>
           <li>Developed an Employee Attendance Management System using Python, Flask, MongoDB, OpenCV and REST APIs.</li>
+          <li>Integrated computer vision and face recognition for automated employee identification, powering real-time attendance processing.</li>
           <li>Supported employee data management, validation, attendance tracking and reporting workflows.</li>
           <li>Implemented API validation, duplicate detection, testing, debugging and database optimizations.</li>
           <li>Collaborated with the team on requirements, documentation and application improvements.</li>
@@ -310,21 +314,40 @@ footer{padding:30px 0 45px;border-top:1px solid var(--line);color:#66748a;font-f
       <article class="card project reveal">
         <div class="project-top"><span class="project-num">01 / Projects</span><span class="project-num">MOBILE + BACKEND</span></div>
         <h3>AeroBasket Flight Booking Application</h3>
-        <p>Built a cross-platform flight booking application using Flutter, Node.js and MongoDB with user authentication, flight search, booking and cart management.</p>
-        <div class="tags"><span class="tag">Flutter</span><span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">REST API</span></div>
+        <p>A full-stack flight booking app built end-to-end as a portfolio piece to demonstrate REST API design, JWT authentication, middleware and database schema design to interviewers.</p>
+        <ul class="plist">
+          <li>Flutter frontend using GetX for state management, with dynamic base-URL resolution to handle both emulator and physical-device testing</li>
+          <li>Node.js/Express + MongoDB backend with a hand-designed schema and indexes for flights, users, bookings and cart data</li>
+          <li>Complete JWT-based auth flow: register, login, forgot password, OTP verification and password reset</li>
+          <li>User profile with photo upload, flight search with city dropdowns and travel-class filtering, and cart management on a seeded flight dataset</li>
+          <li>Worked through real Windows 11 setup issues — Java/Gradle/AGP/Kotlin version conflicts and Smart App Control blocking Dart — to get the app running reliably</li>
+        </ul>
+        <div class="tags"><span class="tag">Flutter</span><span class="tag">GetX</span><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">MongoDB</span><span class="tag">JWT</span><span class="tag">REST API</span></div>
         <div class="project-links"><a class="project-link" href="https://github.com/monarchjain/AeroBasket" target="_blank" rel="noopener">GitHub ↗</a></div>
       </article>
       <article class="card project reveal">
         <div class="project-top"><span class="project-num">02 / Projects</span><span class="project-num">AI / ML</span></div>
         <h3>Multimodal Toxic Speech Detection</h3>
-        <p>Designed a multimodal deep learning pipeline combining text, speech and visual features for toxic speech detection in code-mixed videos.</p>
-        <div class="tags"><span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">IndicBERT</span><span class="tag">Wav2Vec2</span><span class="tag">Whisper</span><span class="tag">OpenCV</span></div>
+        <p>A multimodal deep learning pipeline for detecting toxic and abusive speech in code-mixed Hindi videos, fusing visual, speech and audio signals rather than relying on text alone — extended into an M.Tech thesis on Hindi violence detection.</p>
+        <ul class="plist">
+          <li>Visual pipeline: VGG16-based violence detection trained on the XD-Violence dataset</li>
+          <li>Speech pipeline: OpenAI Whisper for Hindi ASR with anti-hallucination safeguards feeding IndicBERT-based abuse detection with timestamps</li>
+          <li>Audio pipeline: Wav2Vec2 and pitch-based aggression analysis to catch tone that text alone misses</li>
+          <li>Fusion layer combines all three modalities into a single classification, evaluated with Accuracy, Precision, Recall and F1-Score</li>
+          <li>Supports both batch validation against labeled CSV data and single-video inference returning full transcript, abuse flags and per-modality scores</li>
+        </ul>
+        <div class="tags"><span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">VGG16</span><span class="tag">IndicBERT</span><span class="tag">Wav2Vec2</span><span class="tag">Whisper</span><span class="tag">OpenCV</span></div>
         <div class="project-links"><a class="project-link" href="https://github.com/monarchjain/Multi-Toxicity-Detection-Code" target="_blank" rel="noopener">GitHub ↗</a></div>
       </article>
       <article class="card project reveal">
         <div class="project-top"><span class="project-num">03 / Projects</span><span class="project-num">BACKEND + CV</span></div>
         <h3>Employee Attendance Management System</h3>
-        <p>Developed an attendance platform with employee data management, validation, attendance tracking and reporting, backed by REST APIs and computer vision components.</p>
+        <p>An attendance platform combining backend workflows with computer vision, built during an internship at Umbrella Protection Systems.</p>
+        <ul class="plist">
+          <li>Face-recognition-based automated employee identification for real-time attendance capture</li>
+          <li>Employee data management, validation, attendance tracking and reporting backed by REST APIs</li>
+          <li>Duplicate detection, API validation and MongoDB-backed database optimizations</li>
+        </ul>
         <div class="tags"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">MongoDB</span><span class="tag">OpenCV</span><span class="tag">REST API</span></div>
       </article>
       <article class="card project reveal">
