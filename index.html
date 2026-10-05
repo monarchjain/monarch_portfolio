@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Monarch Jain — Salesforce Certified Administrator</title>
-<meta name="description" content="Monarch Jain — Salesforce Certified Administrator specializing in automation, security architecture, and scalable CRM design.">
+<meta name="description" content="Monarch Jain — Salesforce Certified Administrator specializing in automation, security architecture, and scalable CRM design. Also experienced in Python, AI/ML, Flutter and Node.js.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -49,7 +49,7 @@ a{color:inherit;text-decoration:none;}
 h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:600;color:var(--white);line-height:1.08;}
 p{color:var(--slate);line-height:1.7;}
 
-/* background texture: faint starfield / cloud drift */
+/* background texture */
 .bg-decor{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
 .bg-decor svg{position:absolute;opacity:.5;}
 
@@ -63,7 +63,7 @@ header{
 nav{max-width:var(--maxw);margin:0 auto;padding:18px 32px;display:flex;justify-content:space-between;align-items:center;}
 .logo{font-family:'Fraunces',serif;font-weight:600;font-size:19px;color:var(--white);display:flex;align-items:center;gap:9px;}
 .logo .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold);}
-.navlinks{display:flex;gap:34px;font-size:14px;font-weight:500;}
+.navlinks{display:flex;gap:30px;font-size:14px;font-weight:500;}
 .navlinks a{color:var(--slate);transition:color .25s;position:relative;}
 .navlinks a:hover{color:var(--cream);}
 .navlinks a:focus-visible, a:focus-visible, button:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
@@ -209,10 +209,51 @@ section{position:relative;z-index:1;padding:120px 0;}
   padding:32px;position:relative;overflow:hidden;transition:.35s;
 }
 .proj-card:hover{transform:translateY(-6px);border-color:var(--gold);box-shadow:0 24px 50px rgba(0,0,0,.3);}
-.proj-card .proj-year{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--slate-dim);letter-spacing:.08em;}
+.proj-card .proj-year{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--slate-dim);letter-spacing:.08em;text-transform:uppercase;}
 .proj-card h3{font-size:21px;margin:10px 0 12px;}
 .proj-card p{font-size:14.5px;margin-bottom:8px;}
 .proj-glow{position:absolute;width:180px;height:180px;background:radial-gradient(circle,rgba(232,163,61,.14),transparent 70%);top:-60px;right:-60px;border-radius:50%;}
+.proj-card.featured{grid-column:1/-1;border-color:rgba(63,191,173,.4);background:linear-gradient(135deg,rgba(63,191,173,.07),var(--panel) 55%);}
+.proj-card.featured h3{font-size:27px;}
+.proj-card.featured .proj-year{color:var(--teal);}
+.pipe{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0 6px;}
+.pipe div{padding:14px;border:1px solid var(--panel-border);border-radius:10px;background:var(--panel-light);}
+.pipe strong{display:block;font-family:'Fraunces',serif;font-size:15px;color:var(--white);margin-bottom:4px;}
+.pipe span{font-size:12px;color:var(--slate);line-height:1.5;display:block;}
+
+/* ============ RESEARCH / RECOGNITION ============ */
+.pub-card{display:flex;gap:24px;align-items:flex-start;background:var(--panel);border:1px solid var(--panel-border);border-radius:var(--radius);padding:30px;}
+.pub-icon{width:44px;height:44px;flex-shrink:0;color:var(--teal);}
+.pub-card h3{font-size:18px;margin-bottom:8px;}
+.pub-card p{font-size:14.5px;}
+.recog{margin-top:26px;background:linear-gradient(135deg,rgba(232,163,61,.07),var(--panel) 60%);border:1px solid rgba(232,163,61,.3);border-radius:20px;padding:40px;}
+.recog-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;}
+.recog-badge{
+  display:inline-flex;padding:7px 12px;border-radius:100px;border:1px solid rgba(232,163,61,.4);
+  color:var(--gold);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;margin-bottom:18px;
+}
+.recog h3{font-size:25px;margin-bottom:12px;}
+.recog p{font-size:15px;}
+.recog p strong{color:var(--cream);font-weight:600;}
+.recog-quote{
+  margin-top:22px;padding-left:18px;border-left:2px solid var(--gold);
+  font-family:'Fraunces',serif;font-style:italic;font-weight:500;color:var(--cream);font-size:17px;line-height:1.5;
+}
+.recog-quote cite{
+  display:block;margin-top:8px;font-family:'JetBrains Mono',monospace;font-style:normal;
+  font-size:10.5px;letter-spacing:.06em;color:var(--slate-dim);
+}
+.clipping{
+  display:block;border:1px solid rgba(232,163,61,.35);border-radius:14px;overflow:hidden;
+  background:#fff;box-shadow:0 22px 60px rgba(0,0,0,.45);transition:.3s;
+}
+.clipping:hover{transform:translateY(-5px) rotate(-.4deg);border-color:var(--gold);box-shadow:0 28px 70px rgba(232,163,61,.15);}
+.clipping img{display:block;width:100%;height:auto;}
+.clipping-caption{
+  display:block;padding:10px 14px;background:var(--panel);color:var(--gold-soft);
+  font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+}
 
 /* ============ TRAILHEAD / CERTS ============ */
 .trailhead{background:var(--panel);border:1px solid var(--panel-border);border-radius:20px;padding:56px;position:relative;overflow:hidden;}
@@ -253,12 +294,6 @@ section{position:relative;z-index:1;padding:120px 0;}
 }
 .stack-tag:hover{color:var(--white);border-color:var(--teal);}
 
-/* ============ PUBLICATION ============ */
-.pub-card{display:flex;gap:24px;align-items:flex-start;background:var(--panel);border:1px solid var(--panel-border);border-radius:var(--radius);padding:30px;}
-.pub-icon{width:44px;height:44px;flex-shrink:0;color:var(--teal);}
-.pub-card h3{font-size:18px;margin-bottom:8px;}
-.pub-card p{font-size:14.5px;}
-
 /* ============ CONTACT / FOOTER ============ */
 footer{position:relative;z-index:1;padding:110px 0 50px;text-align:center;}
 footer .section-head{margin:0 auto 48px;text-align:center;}
@@ -279,6 +314,9 @@ footer .section-head{margin:0 auto 48px;text-align:center;}
   .badge-orbit{margin-top:50px;max-width:300px;}
   .about{grid-template-columns:1fr;gap:44px;}
   .skills-grid, .proj-grid{grid-template-columns:1fr;}
+  .pipe{grid-template-columns:1fr 1fr;}
+  .recog-grid{grid-template-columns:1fr;}
+  .recog{padding:26px;}
   .edu-grid{grid-template-columns:1fr;gap:30px;}
   .cert-list{grid-template-columns:1fr 1fr;}
   .th-stats{gap:30px;}
@@ -287,9 +325,11 @@ footer .section-head{margin:0 auto 48px;text-align:center;}
   .hero{padding:120px 0 70px;}
   .wrap{padding:0 22px;}
   .foot-bottom{flex-direction:column;text-align:center;}
+  .pub-card{flex-direction:column;}
 }
 @media (max-width:480px){
   .cert-list{grid-template-columns:1fr;}
+  .pipe{grid-template-columns:1fr;}
   .hero-stats{gap:24px;}
   .stat b{font-size:24px;}
 }
@@ -322,6 +362,7 @@ footer .section-head{margin:0 auto 48px;text-align:center;}
       <a href="#skills">Skills</a>
       <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
+      <a href="#research">Research</a>
       <a href="#trailhead">Trailhead</a>
       <a href="#contact">Contact</a>
     </div>
@@ -333,6 +374,7 @@ footer .section-head{margin:0 auto 48px;text-align:center;}
     <a href="#skills" style="padding:12px 0;color:#F3F0E6;">Skills</a>
     <a href="#experience" style="padding:12px 0;color:#F3F0E6;">Experience</a>
     <a href="#projects" style="padding:12px 0;color:#F3F0E6;">Projects</a>
+    <a href="#research" style="padding:12px 0;color:#F3F0E6;">Research</a>
     <a href="#trailhead" style="padding:12px 0;color:#F3F0E6;">Trailhead</a>
     <a href="#contact" style="padding:12px 0;color:#F3F0E6;">Contact</a>
   </div>
@@ -345,7 +387,7 @@ footer .section-head{margin:0 auto 48px;text-align:center;}
       <div class="eyebrow">Salesforce Certified Administrator</div>
       <h1>Monarch<br><span class="accent">Jain</span></h1>
       <div class="role">Automation · Security Architecture · Scalable CRM Design</div>
-      <p class="lead">I turn business requirements into secure, efficient Salesforce applications — built with Flow Builder, a sturdy security model, and a growing command of Apex &amp; SOQL. Currently trailblazing toward Platform Developer I.</p>
+      <p class="lead">I turn business requirements into secure, efficient Salesforce applications — built with Flow Builder, a sturdy security model, and a growing command of Apex &amp; SOQL. Backed by a published AI/ML research paper and full-stack experience. Currently trailblazing toward Platform Developer I.</p>
       <div class="hero-ctas">
         <a href="#projects" class="btn btn-primary">View Projects</a>
         <a href="#contact" class="btn btn-ghost">Get in Touch</a>
@@ -355,6 +397,7 @@ footer .section-head{margin:0 auto 48px;text-align:center;}
         <div class="stat"><b>55K+</b><span>Trailhead Points</span></div>
         <div class="stat"><b>4</b><span>CRM Builds Shipped</span></div>
         <div class="stat"><b>2</b><span>Internships</span></div>
+        <div class="stat"><b>1</b><span>Research Publication</span></div>
       </div>
     </div>
     <div class="badge-orbit">
@@ -380,7 +423,7 @@ footer .section-head{margin:0 auto 48px;text-align:center;}
       <div class="eyebrow">Profile</div>
       <h2 style="font-size:34px;margin-bottom:22px;">From business rule to running Flow</h2>
       <p>I'm a <strong>Salesforce Certified Administrator</strong> with a builder's mindset — turning business requirements into secure, automated, and scalable CRM solutions. I work across <strong>Flow Builder, security architecture, data modeling, and Lightning Experience</strong>, with a growing focus on Apex and platform development.</p>
-      <p>I'm currently expanding from administration into development through <strong>Apex, SOQL, Triggers, and Lightning Web Components</strong>, working toward Platform Developer I. Alongside Salesforce, my background spans <strong>AI/ML, Python, Flutter, Node.js, and databases</strong> — giving me a broader engineering perspective on how products and systems come together.</p>
+      <p>I'm currently expanding from administration into development through <strong>Apex, SOQL, Triggers, and Lightning Web Components</strong>, working toward Platform Developer I. Alongside Salesforce, my background spans <strong>AI/ML, Python, Flutter, Node.js, and databases</strong> — including a published research survey and a multimodal deep-learning project that was featured in <strong>Dainik Bhaskar</strong>.</p>
       <p><strong>I don't just configure platforms. I like building things, understanding how they work, and finding ways to make them better.</strong></p>
     </div>
     <div class="flow-diagram reveal">
@@ -485,9 +528,6 @@ footer .section-head{margin:0 auto 48px;text-align:center;}
           <li>Worked with Node.js backend services and database connectivity.</li>
           <li>Participated in debugging, testing, and feature enhancement throughout the development lifecycle.</li>
         </ul>
-        <div class="proj-links">
-          <a class="proj-link" href="https://github.com/monarchjain/AeroBasket" target="_blank" rel="noopener">GitHub ↗</a>
-        </div>
       </div>
     </div>
   </div>
@@ -497,37 +537,132 @@ footer .section-head{margin:0 auto 48px;text-align:center;}
 <section id="projects">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow">Salesforce Project Experience</div>
-      <h2>Projects across Salesforce & full-stack</h2>
-      <p>From Salesforce CRM systems to full-stack mobile applications, I build practical, secure, and scalable software around real-world workflows.</p>
+      <div class="eyebrow">Selected Projects</div>
+      <h2>Projects across Salesforce &amp; full-stack</h2>
+      <p>From Salesforce CRM systems to multimodal AI and full-stack mobile applications, I build practical, secure, and scalable software around real-world workflows.</p>
     </div>
+    <div class="proj-grid">
+
+      <!-- Featured AI project -->
+      <div class="proj-card featured reveal">
+        <div class="proj-glow"></div>
+        <div class="proj-year">Featured · Multimodal AI</div>
+        <h3>Multimodal Toxic Speech Detection</h3>
+        <p>A deep learning system that detects toxic, abusive and offensive speech in Hindi-English code-mixed video content by jointly analyzing text, speech and visual signals. Featured in Dainik Bhaskar.</p>
+        <div class="pipe">
+          <div><strong>Text</strong><span>IndicBERT for multilingual abusive-language classification.</span></div>
+          <div><strong>Speech</strong><span>Whisper and Wav2Vec 2.0 for transcription and audio features.</span></div>
+          <div><strong>Visual</strong><span>VGG16 and OpenCV for video feature analysis.</span></div>
+          <div><strong>Fusion</strong><span>Late fusion of all three modalities for final classification.</span></div>
+        </div>
+        <p>Built end to end with video preprocessing, frame extraction and audio processing, and evaluated using Accuracy, Precision, Recall and F1-Score.</p>
+        <div class="tag-row">
+          <span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">Hugging Face</span><span class="tag">IndicBERT</span>
+          <span class="tag">Wav2Vec2</span><span class="tag">Whisper</span><span class="tag">VGG16</span><span class="tag">OpenCV</span>
+        </div>
+        <div class="proj-links">
+          <a class="proj-link" href="https://github.com/monarchjain/Multi-Toxicity-Detection-Code" target="_blank" rel="noopener">GitHub ↗</a>
+          <a class="proj-link" href="#research">Read the press feature ↓</a>
+        </div>
+      </div>
+
+      <!-- Salesforce projects -->
       <div class="proj-card reveal">
         <div class="proj-glow"></div>
-        <div class="proj-year">2026</div>
+        <div class="proj-year">2026 · Salesforce</div>
         <h3>Hospital Appointment Management System</h3>
         <p>Built using custom objects, record types, and automation to manage patient appointments end-to-end.</p>
         <p>Implemented validation rules, sharing rules, reports, and dashboards for secure appointment tracking and analytics.</p>
       </div>
       <div class="proj-card reveal">
         <div class="proj-glow"></div>
-        <div class="proj-year">2026</div>
+        <div class="proj-year">2026 · Salesforce</div>
         <h3>Course Enrollment Management System</h3>
         <p>A course enrollment CRM built with Lightning Record Pages, formula fields, and roll-up summary fields.</p>
         <p>Configured profiles, permission sets, sharing rules, and dashboards for student and revenue management.</p>
       </div>
       <div class="proj-card reveal">
         <div class="proj-glow"></div>
-        <div class="proj-year">2026</div>
+        <div class="proj-year">2026 · Salesforce</div>
         <h3>Vehicle Rental Management System</h3>
         <p>Designed with custom objects, encrypted fields, and duplicate management for clean rental data.</p>
         <p>Implemented permission-based access control and reports for monthly rental analytics.</p>
       </div>
       <div class="proj-card reveal">
         <div class="proj-glow"></div>
-        <div class="proj-year">2026</div>
+        <div class="proj-year">2026 · Salesforce</div>
         <h3>Insurance Management System</h3>
         <p>Built with record types, field dependencies, and premium calculation logic for policy management.</p>
         <p>Configured role hierarchy, sharing rules, and security controls for agent and manager access.</p>
+      </div>
+
+      <!-- Full-stack projects -->
+      <div class="proj-card reveal">
+        <div class="proj-glow"></div>
+        <div class="proj-year">Full-stack · Mobile + Backend</div>
+        <h3>AeroBasket Flight Booking App</h3>
+        <p>A Flutter app with a Node.js, Express and MongoDB backend, using GetX for state management.</p>
+        <p>Implemented JWT authentication with registration, login, OTP verification and password reset, plus flight search, cart and booking workflows.</p>
+        <div class="tag-row">
+          <span class="tag">Flutter</span><span class="tag">GetX</span><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">MongoDB</span><span class="tag">JWT</span>
+        </div>
+        <div class="proj-links">
+          <a class="proj-link" href="https://github.com/monarchjain/AeroBasket" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+      <div class="proj-card reveal">
+        <div class="proj-glow"></div>
+        <div class="proj-year">Internship · Backend + Computer Vision</div>
+        <h3>Employee Attendance Management System</h3>
+        <p>A face-recognition attendance platform built during my internship at Umbrella Protection Systems.</p>
+        <p>REST APIs handle employee data, validation, duplicate detection, attendance tracking and reporting.</p>
+        <div class="tag-row">
+          <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">MongoDB</span><span class="tag">OpenCV</span><span class="tag">REST API</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESEARCH & RECOGNITION ============ -->
+<section id="research">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Research &amp; Recognition</div>
+      <h2>Research beyond the platform</h2>
+      <p>My AI/ML work has been published in a journal and featured in the press.</p>
+    </div>
+
+    <div class="pub-card reveal">
+      <svg class="pub-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 19.5A2.5 2.5 0 016.5 17H20V4H6.5A2.5 2.5 0 004 6.5v13z"/><path d="M6.5 17H20v3H6.5A2.5 2.5 0 014 17.5"/></svg>
+      <div>
+        <h3>Toxic Speech Classification Using Deep Learning and Machine Learning: A Survey</h3>
+        <p>A survey paper on abusive language detection and behavior analysis in video content using AI/ML techniques, including multimodal approaches.</p>
+        <div class="proj-links pub-link">
+          <a class="proj-link" href="https://propulsiontechjournal.com/index.php/journal/article/view/10400" target="_blank" rel="noopener">View Publication ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="recog reveal">
+      <div class="recog-grid">
+        <div>
+          <div class="recog-badge">Media Recognition</div>
+          <h3>Featured in Dainik Bhaskar — DB Star</h3>
+          <p>My research work was featured in <strong>Dainik Bhaskar's DB Star</strong> for developing a multimodal deep-learning framework that detects <strong>abusive language and harmful behavior in video content</strong>, supervised by faculty at SGSITS, Indore.</p>
+          <blockquote class="recog-quote">
+            "Researchers built software that alerts on crowds, violent behavior and abusive language."
+            <cite>— DB Star headline, translated from Hindi</cite>
+          </blockquote>
+          <div class="tag-row">
+            <span class="tag">Dainik Bhaskar</span><span class="tag">DB Star</span><span class="tag">Multimodal AI</span><span class="tag">5,000 films &amp; web series dataset</span>
+          </div>
+        </div>
+        <a class="clipping" href="db-star-clipping.jpeg" target="_blank" rel="noopener" aria-label="Open the Dainik Bhaskar clipping in full size">
+          <img src="db-star-clipping.jpeg" alt="Dainik Bhaskar DB Star newspaper clipping about SGSITS researchers building software that alerts on crowds, violent behavior and abusive language" loading="lazy">
+          <span class="clipping-caption">Dainik Bhaskar · DB Star — view full size ↗</span>
+        </a>
       </div>
     </div>
   </div>
@@ -545,7 +680,7 @@ footer .section-head{margin:0 auto 48px;text-align:center;}
         <div class="th-stats">
           <div class="stat"><b>80+</b><span>Trailhead Badges</span></div>
           <div class="stat"><b>55,000+</b><span>Trailhead Points</span></div>
-          <div class="stat"><b>2</b><span>Salesforce Certifications</span></div>
+          <div class="stat"><b>1</b><span>Salesforce Certification</span></div>
         </div>
         <a href="https://www.salesforce.com/trailblazer/monarchjain" target="_blank" rel="noopener" class="btn btn-ghost">View Trailhead Profile →</a>
       </div>
@@ -604,26 +739,6 @@ footer .section-head{margin:0 auto 48px;text-align:center;}
   </div>
 </section>
 
-<!-- ============ PUBLICATION ============ -->
-<section id="publication">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow">Research</div>
-      <h2>Published work</h2>
-    </div>
-    <div class="pub-card reveal">
-      <svg class="pub-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 19.5A2.5 2.5 0 016.5 17H20V4H6.5A2.5 2.5 0 004 6.5v13z"/><path d="M6.5 17H20v3H6.5A2.5 2.5 0 014 17.5"/></svg>
-      <div>
-        <h3>Toxic Speech Classification Using Deep Learning and Machine Learning: A Survey</h3>
-        <p>A survey paper on abusive language detection and behavior analysis in video content using AI/ML techniques.</p>
-        <div class="proj-links pub-link">
-          <a class="proj-link" href="https://propulsiontechjournal.com/index.php/journal/article/view/10400" target="_blank" rel="noopener">View Publication ↗</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ============ STACK ============ -->
 <section id="stack">
   <div class="wrap">
@@ -632,10 +747,11 @@ footer .section-head{margin:0 auto 48px;text-align:center;}
       <h2>Additional technical stack</h2>
     </div>
     <div class="stack-cloud reveal">
-      <span class="stack-tag">Java</span><span class="stack-tag">Python</span><span class="stack-tag">C++</span>
-      <span class="stack-tag">SQL</span><span class="stack-tag">MongoDB</span>
+      <span class="stack-tag">Java</span><span class="stack-tag">Python</span><span class="stack-tag">C++</span><span class="stack-tag">Dart</span>
+      <span class="stack-tag">SQL</span><span class="stack-tag">MongoDB</span><span class="stack-tag">MySQL</span>
       <span class="stack-tag">HTML</span><span class="stack-tag">CSS</span><span class="stack-tag">JavaScript</span>
-      <span class="stack-tag">Flutter</span><span class="stack-tag">Flask</span><span class="stack-tag">Node.js</span><span class="stack-tag">OpenCV</span>
+      <span class="stack-tag">Flutter</span><span class="stack-tag">Flask</span><span class="stack-tag">Node.js</span><span class="stack-tag">Express</span><span class="stack-tag">REST APIs</span>
+      <span class="stack-tag">PyTorch</span><span class="stack-tag">Hugging Face</span><span class="stack-tag">NLP</span><span class="stack-tag">OpenCV</span>
       <span class="stack-tag">Git</span><span class="stack-tag">GitHub</span><span class="stack-tag">VS Code</span><span class="stack-tag">Postman</span>
     </div>
   </div>
